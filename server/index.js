@@ -9,6 +9,7 @@ import path from "path";
 import { v4 as uuidv4 } from "uuid";
 import { fileURLToPath } from "url";
 import bodyParser from "body-parser";
+import { registerAdmin } from "./controllers/auth.js";
 
 //CONFIGURATIONS
 const __filename = fileURLToPath(import.meta.url);
@@ -72,6 +73,7 @@ const recruiterUpload = multer({ storage: recruiterStorage });
 const cvUpload = multer({ storage: cvStorage });
 
 //ROUTE WITH FILES
+app.post("/auth/admin/register", adminUpload.single("picture"), registerAdmin);
 
 //MOONGOSE SETUP
 const PORT = process.env.PORT || 6001;
