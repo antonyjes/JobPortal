@@ -9,7 +9,6 @@ const UserSchema = new mongoose.Schema(
         role: String,
         picturePath: {type: String, default: ""},
         roleJob: String,
-        address: String,
         city: String,
         cvPath: {type: String, default: ""},
     },
