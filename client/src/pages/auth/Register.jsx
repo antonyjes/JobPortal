@@ -1,6 +1,5 @@
-import { cn } from "@/lib/utils";
 import LayoutHome from "../LayoutHome";
-import { Button, buttonVariants } from "@/components/ui/button";
+import { Button } from "@/components/ui/button";
 import { Command } from "lucide-react";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
@@ -66,17 +65,8 @@ const Register = () => {
     <LayoutHome>
       <div className="min-h-[80vh]">
         <div className="container grid h-[80vh] w-screen flex-col items-center justify-center lg:max-w-none lg:grid-cols-1 lg:px-0">
-          <a
-            href="/login"
-            className={cn(
-              buttonVariants({ variant: "ghost" }),
-              "absolute right-4 top-20 md:right-8 md:top-24"
-            )}
-          >
-            Login
-          </a>
           <div className="lg:p-8">
-            <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
+            <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[500px]">
               <div className="flex flex-col space-y-2 text-center">
                 <Command className="mx-auto h-6 w-6" />
                 <h1 className="text-2xl font-semibold tracking-tight">
@@ -148,7 +138,7 @@ const Register = () => {
                       />
                     </div>
                   </div>
-                  <div className="grid gap-1">
+                  <div className="grid gap-1 mb-4">
                     <Label>Image</Label>
                     <Dropzone
                       acceptedFiles=".jpg,.jpeg,.png"
