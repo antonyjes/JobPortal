@@ -46,7 +46,7 @@ const Register = () => {
     formData.append("cvPath", cvFilename);
 
     const savedUserResponse = await fetch(
-      "http://localhost:3003/user/register",
+      "http://localhost:3003/auth/user/register",
       {
         method: "POST",
         body: formData,
