@@ -10,6 +10,7 @@ import { v4 as uuidv4 } from "uuid";
 import { fileURLToPath } from "url";
 import bodyParser from "body-parser";
 import { registerAdmin, registerUser } from "./controllers/auth.js";
+import authRoutes from "./routes/auth.js";
 
 //CONFIGURATIONS
 const __filename = fileURLToPath(import.meta.url);
@@ -72,6 +73,9 @@ app.post(
   userUpload.fields([{name: "picture", maxCount: 1}, {name: "cvFile", maxCount: 1}]),
   registerUser
 );
+
+//ROUTES
+app.use("/auth", authRoutes);
 
 //MOONGOSE SETUP
 const PORT = process.env.PORT || 6001;
