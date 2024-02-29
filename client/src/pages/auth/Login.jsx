@@ -38,7 +38,8 @@ const Login = () => {
                     }
                 )
             );
-            navigate("/home")
+            const role = loggedIn.user.role;
+            navigate(`/${role.toLowerCase()}/home`)
         }
 
         resetForm();
