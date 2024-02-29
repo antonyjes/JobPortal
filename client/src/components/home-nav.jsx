@@ -1,10 +1,14 @@
 import { Command } from "lucide-react";
+import { useSelector } from "react-redux";
 
 export const HomeNav = ({ items, isAuth }) => {
+  const user = useSelector((state) => state.user);
+  const role = user ? user.role : null;
+
   return (
     <div className="flex gap-6 md:gap-10">
       <a
-        href={isAuth ? "/home" : "/"}
+        href={isAuth ? `/${role.toLowerCase()}/home` : "/"}
         className="hidden items-center space-x-2 md:flex"
       >
         <Command />

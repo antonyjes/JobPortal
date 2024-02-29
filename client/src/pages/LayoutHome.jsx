@@ -5,12 +5,13 @@ import { cn } from "@/lib/utils";
 import { setLogout } from "@/state";
 import { useDispatch } from "react-redux";
 
-const LayoutHome = ({ children, isAuth = false }) => {
-  const dispatch = useDispatch();
-  const items = [
-    { title: "Inicio", href: "/" },
-    { title: "Jobs", href: "/jobs" },
-  ];
+const itemsHome = [
+  { title: "Inicio", href: "/" },
+  { title: "Jobs", href: "/jobs" },
+];
+
+const LayoutHome = ({ children, isAuth = false, items = itemsHome }) => {
+  const dispatch = useDispatch(); 
 
   return (
     <div className="flex min-h-screen flex-col">
