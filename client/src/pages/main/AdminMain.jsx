@@ -6,9 +6,9 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 
 const AdminMain = () => {
     const items = [
-        {title: "Dashboard", href: "/homeAdmin"},
+        {title: "Dashboard", href: "/admin/home"},
         {title: "Recruiters", href: "/recruiters"},
-        {title: "Applicants", href: "/applicants"}
+        {title: "Applicants", href: "/admin/applicants"}
     ]
 
     return(
