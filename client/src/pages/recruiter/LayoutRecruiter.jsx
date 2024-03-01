@@ -1,6 +1,6 @@
-import LayoutMain from "./LayoutMain"
+import LayoutHome from "../LayoutHome"
 
-const RecruiterMain = () => {
+const LayoutRecruiter = ({children}) => {
     const items = [
         {title: "Dashboard", href: "/recruiter/home"},
         {title: "Jobs", href: "/recruiter/jobs"},
@@ -9,12 +9,10 @@ const RecruiterMain = () => {
     ]
 
     return(
-        <LayoutMain items={items}>
-            <div className="space-y-4 p-8 pt-6">
-                <h1>Recruiter Home</h1>
-            </div>
-        </LayoutMain>
+        <LayoutHome items={items} isAuth={true}>
+            {children}
+        </LayoutHome>
     )
 }
 
-export default RecruiterMain;
+export default LayoutRecruiter;

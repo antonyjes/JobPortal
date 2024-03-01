@@ -1,18 +1,12 @@
-import LayoutMain from "./LayoutMain"
 import { Building2, UserRound, UsersRound } from "lucide-react"
 import { Heading } from "@/components/heading"
 import { Separator } from "@/components/ui/separator"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import LayoutAdmin from "./LayoutAdmin"
 
 const AdminMain = () => {
-    const items = [
-        {title: "Dashboard", href: "/admin/home"},
-        {title: "Recruiters", href: "/recruiters"},
-        {title: "Applicants", href: "/admin/applicants"}
-    ]
-
     return(
-        <LayoutMain items={items}>
+        <LayoutAdmin>
             <div className="space-y-4 p-8 pt-6">
                 <Heading title="Dashboard" description="Overview your status" />
                 <Separator />
@@ -58,7 +52,7 @@ const AdminMain = () => {
                     </Card>
                 </div>
             </div>
-        </LayoutMain>
+        </LayoutAdmin>
     )
 }
 

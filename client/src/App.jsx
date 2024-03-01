@@ -5,9 +5,9 @@ import "react-toastify/dist/ReactToastify.css"
 import Login from "./pages/auth/Login"
 import Register from "./pages/auth/Register"
 import { useSelector } from "react-redux"
-import AdminMain from "./pages/main/AdminMain"
-import UserMain from "./pages/main/UserMain"
-import RecruiterMain from "./pages/main/RecruiterMain"
+import AdminMain from "./pages/admin/AdminMain"
+import UserMain from "./pages/user/UserMain"
+import RecruiterMain from "./pages/recruiter/RecruiterMain"
 
 function App() {
   const isAuth = Boolean(useSelector((state) => state.token));
