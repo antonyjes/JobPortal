@@ -12,6 +12,7 @@ import bodyParser from "body-parser";
 import { registerAdmin, registerUser } from "./controllers/auth.js";
 import authRoutes from "./routes/auth.js";
 import recruiterRoutes from "./routes/recruiter.js";
+import { createRecruiter } from "./controllers/recruiter.js";
 
 //CONFIGURATIONS
 const __filename = fileURLToPath(import.meta.url);
@@ -74,6 +75,7 @@ app.post(
   userUpload.fields([{name: "picture", maxCount: 1}, {name: "cvFile", maxCount: 1}]),
   registerUser
 );
+app.post("/recruiters/create", recruiterUpload.single("picture"), createRecruiter);
 
 //ROUTES
 app.use("/auth", authRoutes);
