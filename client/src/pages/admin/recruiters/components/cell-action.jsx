@@ -4,6 +4,9 @@ import { setRecruiters } from "@/state";
 import { Edit, MoreHorizontal, Trash } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux"
+import ModalRecruiter from "../ModalRecruiter";
+import { AlertModal } from "@/components/alert-modal";
+import { toast } from "react-toastify";
 
 export const CellAction = ({data}) => {
     const dispatch = useDispatch();
@@ -20,6 +23,23 @@ export const CellAction = ({data}) => {
         const data = await response.json();
         dispatch(setRecruiters({ recruiters: data }))
     }
+
+    const onDelete = async () => {
+        const response = await fetch(
+            `http://localhost:3003/recruiters/${data._id}/delete`, {
+                method: "DELETE",
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    "Content-Type": "application/json",
+                },
+            }
+        );
+        
+        console.log(response);
+        setShowAlert(false);
+        toast.success("Recruited deleted!");
+        getRecruiters();
+    }
     
     useEffect(() => {
         getRecruiters()
@@ -27,6 +47,18 @@ export const CellAction = ({data}) => {
 
     return(
         <>
+            <ModalRecruiter 
+                showModal={showModal}
+                setShowModal={setShowModal}
+                operation="Edit"
+                currentRecruiter={data}
+                getRecruiters={getRecruiters}
+            />
+            <AlertModal
+                showAlert={showAlert}
+                setShowAlert={setShowAlert}
+                onConfirm={() => onDelete(data._id)}
+            />
             <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                     <Button variant="ghost" className="h-8 w-8 p-0">

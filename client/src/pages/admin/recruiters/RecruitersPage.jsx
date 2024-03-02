@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux"
 import LayoutAdmin from "../LayoutAdmin";
 import { RecruiterClient } from "./components/client";
+import ModalRecruiter from "./ModalRecruiter";
 
 const RecruitersPage = () => {
     const dispatch = useDispatch();
@@ -33,6 +34,17 @@ const RecruitersPage = () => {
                     </div>
                 </div>
             </LayoutAdmin>
+            {
+                showModal && (
+                    <ModalRecruiter
+                        showModal={showModal}
+                        setShowModal={setShowModal}
+                        operation="Create"
+                        currentRecruiter={[]}
+                        getRecruiters={getRecruiters}
+                    />
+                )
+            }
         </>
     )
 }
