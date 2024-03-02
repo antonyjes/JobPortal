@@ -11,6 +11,7 @@ import { fileURLToPath } from "url";
 import bodyParser from "body-parser";
 import { registerAdmin, registerUser } from "./controllers/auth.js";
 import authRoutes from "./routes/auth.js";
+import recruiterRoutes from "./routes/recruiter.js";
 
 //CONFIGURATIONS
 const __filename = fileURLToPath(import.meta.url);
@@ -76,6 +77,7 @@ app.post(
 
 //ROUTES
 app.use("/auth", authRoutes);
+app.use("/recruiters", recruiterRoutes);
 
 //MOONGOSE SETUP
 const PORT = process.env.PORT || 6001;
