@@ -9,7 +9,7 @@ export const RecruiterClient = ({ data, setShowModal }) => {
     return(
         <>
             <div className="flex items-center justify-between">
-                <Heading title="Employees" description="Manage your recruiters" />
+                <Heading title="Recruiters" description="Manage your recruiters" />
                 <Button onClick={() => setShowModal(true)}>
                     <Plus className="mr-2 h-4 w-4" />
                     Add New
