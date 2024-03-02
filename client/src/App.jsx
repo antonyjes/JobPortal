@@ -8,6 +8,7 @@ import { useSelector } from "react-redux"
 import AdminMain from "./pages/admin/AdminMain"
 import UserMain from "./pages/user/UserMain"
 import RecruiterMain from "./pages/recruiter/RecruiterMain"
+import RecruitersPage from "./pages/admin/recruiters/RecruitersPage"
 
 function App() {
   const isAuth = Boolean(useSelector((state) => state.token));
@@ -26,6 +27,7 @@ function App() {
           <Route path="/admin/home" element={isAuth && isAdmin ? <AdminMain /> : <Navigate to="/" />} />
           <Route path="/user/home" element={isAuth && isUser ? <UserMain /> : <Navigate to="/" />} />
           <Route path="/recruiter/home" element={isAuth && isRecruiter ? <RecruiterMain /> : <Navigate to="/" />} />
+          <Route path="/admin/recruiters" element={isAuth && isAdmin ? <RecruitersPage /> : <Navigate to="/" />} />
         </Routes>
       </BrowserRouter>
       <ToastContainer />
