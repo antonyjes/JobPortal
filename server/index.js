@@ -12,7 +12,8 @@ import bodyParser from "body-parser";
 import { registerAdmin, registerUser } from "./controllers/auth.js";
 import authRoutes from "./routes/auth.js";
 import recruiterRoutes from "./routes/recruiter.js";
-import { createRecruiter } from "./controllers/recruiter.js";
+import { createRecruiter, editRecruiter } from "./controllers/recruiter.js";
+import { verifyToken } from "./middleware/auth.js";
 
 //CONFIGURATIONS
 const __filename = fileURLToPath(import.meta.url);
@@ -76,6 +77,7 @@ app.post(
   registerUser
 );
 app.post("/recruiters/create", recruiterUpload.single("picture"), createRecruiter);
+app.patch("/recruiters/:recruiterId/edit", verifyToken, recruiterUpload.single("picture"), editRecruiter);
 
 //ROUTES
 app.use("/auth", authRoutes);
