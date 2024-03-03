@@ -76,3 +76,23 @@ export const editRecruiter = async (req, res) => {
         res.status(409).json({ message: error.message })
     }
 }
+
+//DELETE
+export const deleteRecruiter = async (req, res) => {
+    try {
+        const { recruiterId } = req.params;
+        const deletedRecruiter = await Recruiter.findByIdAndDelete(recruiterId);
+        const filePath = "./public/assets/recruiters/" + deletedRecruiter.picturePath;
+
+        if (fs.existsSync(filePath)) {
+            fs.unlink(filePath, function (err) {
+                if (err) throw err;
+                console.log("File deleted!");
+            })
+        }
+
+        res.status(200).json(deletedRecruiter);
+    } catch (error) {
+        res.status(409).json({ message: error.message })
+    }
+}
