@@ -9,7 +9,6 @@ export const getRecruiters = async (req, res) => {
         const recruiters = await Recruiter.find();
         res.status(200).json(recruiters);
     } catch (error) {
-        con
         res.status(409).json({ message: error.message })
     }
 }
