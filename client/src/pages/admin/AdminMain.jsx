@@ -8,7 +8,7 @@ const AdminMain = () => {
     return(
         <LayoutAdmin>
             <div className="space-y-4 p-8 pt-6">
-                <Heading title="Dashboard" description="Overview your status" />
+                <Heading title="Dashboard Admin" description="Overview your status" />
                 <Separator />
                 <div className="grid gap-4 grid-cols-3">
                     <Card>
