@@ -6,9 +6,13 @@ import { Button } from "@/components/ui/button";
 import ReactQuill from "react-quill";
 import 'react-quill/dist/quill.snow.css';
 import { X } from "lucide-react";
+import { useSelector } from "react-redux";
+import { toast } from "react-toastify";
 
-const JobForm = ({ jobData, setjobData }) => {
+const JobForm = ({ jobData, setJobData }) => {
   const navigate = useNavigate();
+  const token = useSelector((state) => state.token);
+  const recruiterId = useSelector((state) => state.user._id);
   const [title, setTitle] = useState(jobData?.title || "");
   const [description, setDescription] = useState(jobData?.description || "");
   const [location, setLocation] = useState(jobData?.location || "");
@@ -38,11 +42,57 @@ const JobForm = ({ jobData, setjobData }) => {
   }
 
   const createJob = async () => {
-    console.log("Create pls");
+    const savedJobResponse = await fetch("http://localhost:3003/jobs/create", {
+      method: "POST",
+      headers: { Authorization: `Bearer ${token}` },
+      body: JSON.stringify({
+        title: title,
+        description: description,
+        location: location,
+        category: category,
+        requirements: requirements,
+        jobType: jobType,
+        status: status,
+        salary: salary,
+        recruiterId: recruiterId,
+      })
+    });
+
+    const savedJob = await savedJobResponse.json();
+
+    if (savedJob) {
+      toast.success("Job created!");
+      navigate("/recruiter/jobs");      
+    }
   }
 
   const editJob = async () => {
-    console.log("Edit it common");
+    const updatedJobResponse = await fetch(
+      `http://localhost:3003/jobs/${jobData?._id}/edit`,
+      {
+        method: "PATCH",
+        headers: { Authorization: `Bearer ${token}`},
+        body: JSON.stringify({
+          title: title,
+          description: description,
+          location: location,
+          category: category,
+          requirements: requirements,
+          jobType: jobType,
+          status: status,
+          salary: salary,
+          recruiterId: recruiterId,
+        })
+      }
+    )
+
+    const updatedJob = await updatedJobResponse.json();
+
+    if (updatedJob) {
+      setJobData(updatedJob);
+      toast.success("Job updated!");
+      navigate("/recruiter/jobs");
+    }
   }
 
   const handleSubmit = async (e) => {
