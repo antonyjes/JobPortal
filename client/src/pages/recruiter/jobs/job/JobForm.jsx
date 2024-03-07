@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import ReactQuill from "react-quill";
-import 'react-quill/dist/quill.snow.css';
+import "react-quill/dist/quill.snow.css";
 import { X } from "lucide-react";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
@@ -28,18 +28,18 @@ const JobForm = ({ jobData, setJobData }) => {
     const updatedRequirements = [...requirements];
     updatedRequirements.splice(index, 1);
     setRequirements(updatedRequirements);
-  }
+  };
 
   const handleAddRequirement = () => {
     if (requirement.trim() !== "") {
       setRequirements([...requirements, requirement]);
       setRequirement("");
     }
-  }
+  };
 
   const handleChangeEditor = (value) => {
     setDescription(value);
-  }
+  };
 
   const createJob = async () => {
     const savedJobResponse = await fetch("http://localhost:3003/jobs/create", {
@@ -55,23 +55,23 @@ const JobForm = ({ jobData, setJobData }) => {
         status: status,
         salary: salary,
         recruiterId: recruiterId,
-      })
+      }),
     });
 
     const savedJob = await savedJobResponse.json();
 
     if (savedJob) {
       toast.success("Job created!");
-      navigate("/recruiter/jobs");      
+      navigate("/recruiter/jobs");
     }
-  }
+  };
 
   const editJob = async () => {
     const updatedJobResponse = await fetch(
       `http://localhost:3003/jobs/${jobData?._id}/edit`,
       {
         method: "PATCH",
-        headers: { Authorization: `Bearer ${token}`},
+        headers: { Authorization: `Bearer ${token}` },
         body: JSON.stringify({
           title: title,
           description: description,
@@ -82,9 +82,9 @@ const JobForm = ({ jobData, setJobData }) => {
           status: status,
           salary: salary,
           recruiterId: recruiterId,
-        })
+        }),
       }
-    )
+    );
 
     const updatedJob = await updatedJobResponse.json();
 
@@ -93,13 +93,13 @@ const JobForm = ({ jobData, setJobData }) => {
       toast.success("Job updated!");
       navigate("/recruiter/jobs");
     }
-  }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (action === "Create") await createJob();
     if (action === "Edit") await editJob();
-  }
+  };
 
   return (
     <div className="min-h-[80vh]">
@@ -125,21 +125,38 @@ const JobForm = ({ jobData, setJobData }) => {
                   />
                 </div>
                 <div className="grid gap-1 mb-4">
-                    <Label>Description</Label>
-                    <ReactQuill theme="snow" value={description} onChange={handleChangeEditor} className="h-[15rem]" />
+                  <Label>Description</Label>
+                  <ReactQuill
+                    theme="snow"
+                    value={description}
+                    onChange={handleChangeEditor}
+                    className="h-[15rem]"
+                  />
                 </div>
                 <div className="grid gap-2 grid-cols-3 mb-4 mt-[3.5rem]">
                   <div className="grid gap-1">
                     <Label>Location</Label>
-                    <Input type="text" onChange={(e) => setLocation(e.target.value)} value={location} />
+                    <Input
+                      type="text"
+                      onChange={(e) => setLocation(e.target.value)}
+                      value={location}
+                    />
                   </div>
                   <div className="grid gap-1">
                     <Label>Category</Label>
-                    <Input type="text" onChange={(e) => setCategory(e.target.value)} value={category} />
+                    <Input
+                      type="text"
+                      onChange={(e) => setCategory(e.target.value)}
+                      value={category}
+                    />
                   </div>
                   <div className="grid gap-1">
                     <Label>Job Type</Label>
-                    <select value={jobType} onChange={(e) => setJobType(e.target.value)} className="h-10 rounded-md border border-input text-sm">
+                    <select
+                      value={jobType}
+                      onChange={(e) => setJobType(e.target.value)}
+                      className="h-10 rounded-md border border-input text-sm"
+                    >
                       <option value="">Select the job type:</option>
                       <option value="Full-time">Full-time</option>
                       <option value="Part-time">Part-time</option>
@@ -151,21 +168,36 @@ const JobForm = ({ jobData, setJobData }) => {
                   <Label>Requirements</Label>
                   <div className="flex flex-row gap-2">
                     {requirements.map((item, index) => (
-                      <div key={index} className="flex flex-row gap-1 rounded-md bg-sky-300 p-1">
+                      <div
+                        key={index}
+                        className="flex flex-row gap-1 rounded-md bg-sky-300 p-1"
+                      >
                         <p className="font-sans">{item}</p>
-                        <button onClick={() => handleDeleteRequirement(index)}><X className="w-[1rem]" /></button>
+                        <button onClick={() => handleDeleteRequirement(index)}>
+                          <X className="w-[1rem]" />
+                        </button>
                       </div>
                     ))}
                   </div>
                   <div className="flex flex-row gap-2">
-                    <Input type="text" onChange={(e) => setRequirement(e.target.value)} value={requirement}/>
-                    <Button type="button" onClick={handleAddRequirement}>Add</Button>
-                  </div>                  
+                    <Input
+                      type="text"
+                      onChange={(e) => setRequirement(e.target.value)}
+                      value={requirement}
+                    />
+                    <Button type="button" onClick={handleAddRequirement}>
+                      Add
+                    </Button>
+                  </div>
                 </div>
                 <div className="grid gap-2 grid-cols-2 mb-4">
                   <div className="grid gap-1">
                     <Label>Status</Label>
-                    <select value={status} onChange={(e) => setStatus(e.target.value)} className="h-10 rounded-md border border-input text-sm">
+                    <select
+                      value={status}
+                      onChange={(e) => setStatus(e.target.value)}
+                      className="h-10 rounded-md border border-input text-sm"
+                    >
                       <option value="">Select the status:</option>
                       <option value="Open">Open</option>
                       <option value="Interviews">Interviews</option>
@@ -173,8 +205,12 @@ const JobForm = ({ jobData, setJobData }) => {
                     </select>
                   </div>
                   <div className="grid gap-1">
-                      <Label>Salary</Label>
-                      <Input type="number" onChange={(e) => setSalary(e.target.value)} value={salary} />
+                    <Label>Salary</Label>
+                    <Input
+                      type="number"
+                      onChange={(e) => setSalary(e.target.value)}
+                      value={salary}
+                    />
                   </div>
                 </div>
                 <div className="pt-6 space-x-2 flex items-center justify-end w-full">
