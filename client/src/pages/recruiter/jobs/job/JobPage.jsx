@@ -27,7 +27,7 @@ const JobPage = () => {
 
     return(
         <LayoutRecruiter>
-            <JobForm jobData={jobData} setjobData={setJobData} />
+            <JobForm jobData={jobData} setJobData={setJobData} />
         </LayoutRecruiter>
     )
 }
