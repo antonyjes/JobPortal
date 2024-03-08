@@ -10,7 +10,8 @@ import UserMain from "./pages/user/UserMain"
 import RecruiterMain from "./pages/recruiter/RecruiterMain"
 import RecruitersPage from "./pages/admin/recruiters/RecruitersPage"
 import JobsPage from "./pages/recruiter/jobs/JobsPage"
-import JobPage from "./pages/recruiter/jobs/job/JobPage"
+import NewJob from "./pages/recruiter/jobs/job/NewJob"
+import EditJob from "./pages/recruiter/jobs/job/EditJob"
 
 function App() {
   const isAuth = Boolean(useSelector((state) => state.token));
@@ -31,7 +32,8 @@ function App() {
           <Route path="/recruiter/home" element={isAuth && isRecruiter ? <RecruiterMain /> : <Navigate to="/" />} />
           <Route path="/admin/recruiters" element={isAuth && isAdmin ? <RecruitersPage /> : <Navigate to="/" />} />
           <Route path="/recruiter/jobs" element={isAuth && isRecruiter ? <JobsPage /> : <Navigate to="/" />} />
-          <Route path="/recruiter/jobs/:jobId" element={isAuth && isRecruiter ? <JobPage /> : <Navigate to="/" />} />
+          <Route path="/recruiter/jobs/new" element={isAuth && isRecruiter ? <NewJob /> : <Navigate to="/" />} />
+          <Route path="/recruiter/jobs/:jobId" element={isAuth && isRecruiter ? <EditJob /> : <Navigate to="/" />} />
         </Routes>
       </BrowserRouter>
       <ToastContainer />
