@@ -11,6 +11,16 @@ export const getJobs = async (req, res) => {
   }
 };
 
+export const getJob = async (req, res) => {
+  try {
+    const { jobId } = req.params;
+    const job = await Job.findById(jobId);
+    res.status(201).json(job);
+  } catch (error) {
+    res.status(409).json({ message: error.message });
+  }
+}
+
 //CREATE
 export const createJob = async (req, res) => {
   try {
@@ -82,3 +92,14 @@ export const editJob = async (req, res) => {
     res.status(409).json({ message: error.message });
   }
 };
+
+//DELETE
+export const deleteJob = async (req, res) => {
+  try {
+    const { jobId } = req.params;
+    const deletedJob = await Job.findByIdAndDelete(jobId);
+    res.status(200).json(deletedJob);
+  } catch (error) {
+    res.status(409).json({ message: error.message })
+  }
+}
