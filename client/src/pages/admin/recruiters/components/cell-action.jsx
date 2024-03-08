@@ -24,9 +24,9 @@ export const CellAction = ({data}) => {
         dispatch(setRecruiters({ recruiters: data }))
     }
 
-    const onDelete = async () => {
+    const onDelete = async (id) => {
         const response = await fetch(
-            `http://localhost:3003/recruiters/${data._id}/delete`, {
+            `http://localhost:3003/recruiters/${id}/delete`, {
                 method: "DELETE",
                 headers: {
                     Authorization: `Bearer ${token}`,
