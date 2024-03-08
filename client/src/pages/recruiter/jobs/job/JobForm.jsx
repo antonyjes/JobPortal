@@ -44,7 +44,10 @@ const JobForm = ({ jobData, setJobData }) => {
   const createJob = async () => {
     const savedJobResponse = await fetch("http://localhost:3003/jobs/create", {
       method: "POST",
-      headers: { Authorization: `Bearer ${token}` },
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
       body: JSON.stringify({
         title: title,
         description: description,
@@ -71,7 +74,10 @@ const JobForm = ({ jobData, setJobData }) => {
       `http://localhost:3003/jobs/${jobData?._id}/edit`,
       {
         method: "PATCH",
-        headers: { Authorization: `Bearer ${token}` },
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
         body: JSON.stringify({
           title: title,
           description: description,
