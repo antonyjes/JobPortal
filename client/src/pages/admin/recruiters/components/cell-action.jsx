@@ -40,10 +40,6 @@ export const CellAction = ({data}) => {
         toast.success("Recruited deleted!");
         getRecruiters();
     }
-    
-    useEffect(() => {
-        getRecruiters()
-    }, [])
 
     return(
         <>
