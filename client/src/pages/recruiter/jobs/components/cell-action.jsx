@@ -1,15 +1,51 @@
+import { AlertModal } from "@/components/alert-modal";
 import { Button } from "@/components/ui/button";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
+import { setJobs } from "@/state";
 import { Edit, MoreHorizontal, Trash } from "lucide-react";
-import { useSelector } from "react-redux"
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 export const CellAction = ({data}) => {
+    const dispatch = useDispatch();
     const token = useSelector((state) => state.token);
     const navigate = useNavigate();
+    const [showAlert, setShowAlert] = useState(false);
+
+    const getJobs = async () => {
+        const response = await fetch("http://localhost:3003/jobs", {
+            method: "GET",
+            headers: { Authorization: `Bearer ${token}`},
+        })
+
+        const data = await response.json();
+        dispatch(setJobs({ jobs: data }));
+    }
+
+    const onDelete = async (id) => {
+        const response = await fetch(`http://localhost:3003/jobs/${id}/delete`, {
+            method: "DELETE",
+            headers: {
+                Authorization: `Bearer ${token}`,
+                "Content-Type": "application/json",
+            }
+        })
+
+        console.log(response);
+        setShowAlert(false);
+        toast.success("Job deleted!");
+        getJobs();
+    }
 
     return(
-        <>
+        <> 
+            <AlertModal
+                showAlert={showAlert}
+                setShowAlert={setShowAlert}
+                onConfirm={() => onDelete(data._id)}
+            />
             <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                     <Button variant="ghost" className="h-8 w-8 p-0">
@@ -23,7 +59,7 @@ export const CellAction = ({data}) => {
                         <Edit className="mr-2 h-4 w-4" />
                         Update
                     </DropdownMenuItem>
-                    <DropdownMenuItem>
+                    <DropdownMenuItem onClick={() => setShowAlert(true)}>
                         <Trash className="mr-2 h-4 w-4" />
                         Delete
                     </DropdownMenuItem>
