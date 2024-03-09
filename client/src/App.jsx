@@ -12,6 +12,7 @@ import RecruitersPage from "./pages/admin/recruiters/RecruitersPage"
 import JobsPage from "./pages/recruiter/jobs/JobsPage"
 import NewJob from "./pages/recruiter/jobs/job/NewJob"
 import EditJob from "./pages/recruiter/jobs/job/EditJob"
+import HomeJobs from "./pages/HomeJobs"
 
 function App() {
   const isAuth = Boolean(useSelector((state) => state.token));
@@ -25,6 +26,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/jobs" element={<HomeJobs />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/admin/home" element={isAuth && isAdmin ? <AdminMain /> : <Navigate to="/" />} />
