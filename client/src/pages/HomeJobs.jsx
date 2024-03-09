@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import LayoutHome from "./LayoutHome";
+import ReactPaginate from "react-paginate";
 
 const HomeJobs = () => {
-  const [jobs, setJobs] = useState(null);
+  const [jobs, setJobs] = useState([]);
+  const [currentPage, setCurrentPage] = useState(0);  
 
   const getPublicJobs = async () => {
     const response = await fetch("http://localhost:3003/jobs/public", {
@@ -13,6 +15,14 @@ const HomeJobs = () => {
     setJobs(data);
   };
 
+  const PER_PAGE = 9;
+  const offset = currentPage * PER_PAGE;
+  const pageCount = Math.ceil(jobs.length / PER_PAGE);
+
+  const handlePageClick = ({ selected: selectedPage }) => {
+    setCurrentPage(selectedPage)
+  }
+
   useEffect(() => {
     getPublicJobs();
   }, []);
@@ -22,7 +32,7 @@ const HomeJobs = () => {
       <section className="space-y-6 pb-8 pt-6 md:pb-12 md:pt-10 lg:py-32">
         <div className="container flex max-w-[64rem] gap-4">
           {jobs &&
-            jobs.map((job) => (
+            jobs.slice(offset, offset + PER_PAGE).map((job) => (
               <div
                 className="max-w-sm rounded overflow-hidden shadow-lg"
                 key={job._id}
@@ -45,8 +55,21 @@ const HomeJobs = () => {
                     ))}
                 </div>
               </div>
-            ))}
+            ))}            
         </div>
+        <div className="flex justify-center mt-4">
+              <ReactPaginate
+                previousLabel={"← Previous"}
+                nextLabel={"Next →"}
+                pageCount={pageCount}
+                onPageChange={handlePageClick}
+                containerClassName={"pagination"}
+                previousLinkClassName={"previous_page"}
+                nextLinkClassName={"next_page"}
+                disabledClassName={"pagination__link--disabled"}
+                activeClassName={"pagination__link--active"}
+              />
+            </div>
       </section>
     </LayoutHome>
   );
