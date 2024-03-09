@@ -11,6 +11,15 @@ export const getJobs = async (req, res) => {
   }
 };
 
+export const getPublicJobs = async (req, res) => {
+  try {
+    const jobs = await Job.find({ status: "Open" });
+    res.status(200).json(jobs);
+  } catch (error) {
+    res.status(409).json({ message: error.message })
+  }
+}
+
 export const getJob = async (req, res) => {
   try {
     const { jobId } = req.params;
@@ -19,7 +28,7 @@ export const getJob = async (req, res) => {
   } catch (error) {
     res.status(409).json({ message: error.message });
   }
-}
+};
 
 //CREATE
 export const createJob = async (req, res) => {
