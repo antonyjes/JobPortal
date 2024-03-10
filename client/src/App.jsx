@@ -12,7 +12,7 @@ import RecruitersPage from "./pages/admin/recruiters/RecruitersPage"
 import JobsPage from "./pages/recruiter/jobs/JobsPage"
 import NewJob from "./pages/recruiter/jobs/job/NewJob"
 import EditJob from "./pages/recruiter/jobs/job/EditJob"
-import HomeJobs from "./pages/HomeJobs"
+import HomeJobs from "./pages/jobHome/HomeJobs"
 
 function App() {
   const isAuth = Boolean(useSelector((state) => state.token));
