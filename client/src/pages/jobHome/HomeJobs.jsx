@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import LayoutHome from "./LayoutHome";
+import LayoutHome from "../LayoutHome";
 import ReactPaginate from "react-paginate";
 
 const HomeJobs = () => {
