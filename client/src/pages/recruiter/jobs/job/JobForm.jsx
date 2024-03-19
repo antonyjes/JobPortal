@@ -31,7 +31,7 @@ const JobForm = ({ jobData, setJobData }) => {
   };
 
   const handleAddRequirement = () => {
-    if (requirement.trim() !== "") {
+    if (requirement.trim() !== "" && requirements.length < 3) {
       setRequirements([...requirements, requirement]);
       setRequirement("");
     }
@@ -171,7 +171,7 @@ const JobForm = ({ jobData, setJobData }) => {
                   </div>
                 </div>
                 <div className="grid gap-1 mb-4">
-                  <Label>Requirements</Label>
+                  <Label>Requirements <span>(máximo 3)</span></Label>
                   <div className="flex flex-row gap-2">
                     {requirements.map((item, index) => (
                       <div
