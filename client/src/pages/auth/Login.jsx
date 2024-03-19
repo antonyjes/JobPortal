@@ -89,6 +89,7 @@ const Login = () => {
                                     </div>
                                 </form>
                             </div>
+                            <p className="px-8 text-center text-sm text-muted-foreground">If you don&apos;t have an account <a className="underline underline-offset-4 hover:text-primary" href="/register">click here</a>.</p>
                         </div>
                     </div>
                 </div>
