@@ -13,6 +13,7 @@ import { registerAdmin, registerUser } from "./controllers/auth.js";
 import authRoutes from "./routes/auth.js";
 import recruiterRoutes from "./routes/recruiter.js";
 import jobRoutes from "./routes/job.js";
+import applicationRoutes from "./routes/application.js";
 import { createRecruiter, editRecruiter } from "./controllers/recruiter.js";
 import { verifyToken } from "./middleware/auth.js";
 
@@ -84,6 +85,7 @@ app.patch("/recruiters/:recruiterId/edit", verifyToken, recruiterUpload.single("
 app.use("/auth", authRoutes);
 app.use("/recruiters", recruiterRoutes);
 app.use("/jobs", jobRoutes);
+app.use("/applications", applicationRoutes);
 
 //MOONGOSE SETUP
 const PORT = process.env.PORT || 6001;
