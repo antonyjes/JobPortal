@@ -8,6 +8,7 @@ const router = express.Router();
 router.get("/", verifyToken, getJobs);
 router.get("/public", getPublicJobs);
 router.get("/:jobId", verifyToken, getJob);
+router.get("/:jobId/public", getJob);
 
 //CREATE
 router.post("/create", verifyToken, createJob);
