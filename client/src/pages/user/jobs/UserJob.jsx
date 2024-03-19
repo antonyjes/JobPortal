@@ -5,6 +5,7 @@ import { JobDetails } from "@/components/job-details";
 import { useDispatch, useSelector } from "react-redux";
 import { setJobs } from "@/state";
 import { Button } from "@/components/ui/button";
+import { toast } from "react-toastify";
 
 const UserJob = () => {
     const [jobData, setJobData] = useState([]);
@@ -32,7 +33,29 @@ const UserJob = () => {
 
         const data = await response.json();
         dispatch(setJobs({ jobs: data }));
-    }    
+    }
+    
+    const onApply = async (e) => {
+        e.preventDefault();
+        const response = await fetch("http://localhost:3003/applications/create", {
+            method: "POST",
+            headers: {
+                Authorization: `Bearer ${token}`,
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                jobId: jobId,
+                userId: userId,
+            })
+        });
+
+        const savedApply = await response.json();
+
+        if (savedApply) {
+            toast.success("Job aplied!");
+            navigate("/user/home");
+        }
+    }
 
     useEffect(() => {
         getPublicJob();
@@ -51,7 +74,7 @@ const UserJob = () => {
                     userJobFilter.length > 0 ? (
                         <p className="px-8 text-center text-sm text-muted-foreground">You&apos;ve already aplied for this job.</p>
                     ) : (
-                        <Button>Apply Job</Button>
+                        <Button onClick={(e) => onApply(e)}>Apply Job</Button>
                     )
                 }
             </div>            
