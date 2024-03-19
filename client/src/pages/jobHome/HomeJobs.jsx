@@ -18,7 +18,7 @@ const HomeJobs = () => {
     setJobs(data);
   };
 
-  const PER_PAGE = 9;
+  const PER_PAGE = 6;
   const offset = currentPage * PER_PAGE;
   const pageCount = Math.ceil(jobs.length / PER_PAGE);
 
@@ -33,7 +33,7 @@ const HomeJobs = () => {
   return (
     <LayoutHome>
       <section className="space-y-6 pb-4 pt-3 md:pb-6 md:pt-5 lg:py-16">
-        <div className="container flex max-w-[64rem] gap-4">
+        <div className="container grid grid-cols-1 md:grid-cols-3 gap-4">
           {jobs &&
             jobs.slice(offset, offset + PER_PAGE).map((job) => (
               <div
