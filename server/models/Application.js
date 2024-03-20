@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 const ApplicationSchema = new mongoose.Schema(
     {
         jobId: String,
+        jobTitle: String,
         userId: String,
         userName: String,
         userCvPath: {type: String, default: ""},
