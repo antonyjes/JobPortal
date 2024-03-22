@@ -4,7 +4,7 @@ const LayoutRecruiter = ({children}) => {
     const items = [
         {title: "Dashboard", href: "/recruiter/home"},
         {title: "Jobs", href: "/recruiter/jobs"},
-        {title: "Applicants", href: "/recruiter/applicants"},
+        {title: "Applications", href: "/recruiter/applications"},
         {title: "Profile", href: "/recruiter/profile"}
     ]
 
