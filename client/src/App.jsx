@@ -16,6 +16,8 @@ import HomeJobs from "./pages/jobHome/HomeJobs"
 import HomeJob from "./pages/jobHome/HomeJob"
 import UserJobs from "./pages/user/jobs/UserJobs"
 import UserJob from "./pages/user/jobs/UserJob"
+import JobsForApplications from "./pages/recruiter/applications/JobsForApplications"
+import ApplicationsPage from "./pages/recruiter/applications/ApplicationsPage"
 
 function App() {
   const isAuth = Boolean(useSelector((state) => state.token));
@@ -34,14 +36,16 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/admin/home" element={isAuth && isAdmin ? <AdminMain /> : <Navigate to="/" />} />
+          <Route path="/admin/recruiters" element={isAuth && isAdmin ? <RecruitersPage /> : <Navigate to="/" />} />
           <Route path="/user/home" element={isAuth && isUser ? <UserMain /> : <Navigate to="/" />} />
           <Route path="/user/jobs" element={isAuth && isUser ? <UserJobs /> : <Navigate to="/" />} />
           <Route path="/user/jobs/:jobId" element={isAuth && isUser ? <UserJob /> : <Navigate to="/" />} />
           <Route path="/recruiter/home" element={isAuth && isRecruiter ? <RecruiterMain /> : <Navigate to="/" />} />
-          <Route path="/admin/recruiters" element={isAuth && isAdmin ? <RecruitersPage /> : <Navigate to="/" />} />
           <Route path="/recruiter/jobs" element={isAuth && isRecruiter ? <JobsPage /> : <Navigate to="/" />} />
           <Route path="/recruiter/jobs/new" element={isAuth && isRecruiter ? <NewJob /> : <Navigate to="/" />} />
           <Route path="/recruiter/jobs/:jobId" element={isAuth && isRecruiter ? <EditJob /> : <Navigate to="/" />} />
+          <Route path="/recruiter/applications" element={isAuth && isRecruiter ? <JobsForApplications /> : <Navigate to="/" />} />
+          <Route path="/recruiter/applications/:jobId" element={isAuth && isRecruiter ? <ApplicationsPage /> : <Navigate to="/" />} />
         </Routes>
       </BrowserRouter>
       <ToastContainer />
