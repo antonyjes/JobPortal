@@ -13,6 +13,16 @@ export const getUserApplications = async (req, res) => {
     }
 }
 
+export const getApplicationsByJob = async (req, res) => {
+    try {
+        const { jobId } = req.params;
+        const applications = await Application.find({ jobId: jobId });
+        res.status(201).json(applications);
+    } catch (error) {
+        res.status(409).json({ message: error.message });
+    }
+}
+
 //CREATE
 export const createApplication = async (req, res) => {
     try {
@@ -30,6 +40,25 @@ export const createApplication = async (req, res) => {
         });
         const savedApplication = await newApplication.save();
         res.status(200).json(savedApplication);
+    } catch (error) {
+        res.status(409).json({ message: error.message });
+    }
+}
+
+//UPDATE
+export const editApplication = async (req, res) => {
+    try {
+        const { applicationId } = req.params;
+        const {notes, status} = req.body;
+        const updatedApplication = await Application.findByIdAndUpdate(
+            applicationId,
+            {
+                notes,
+                status
+            },
+            {new: true}
+        );
+        res.status(201).json(updatedApplication);
     } catch (error) {
         res.status(409).json({ message: error.message });
     }
