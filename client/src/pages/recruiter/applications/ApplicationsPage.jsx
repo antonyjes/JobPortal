@@ -1,5 +1,5 @@
 import { setApplications } from "@/state";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux"
 import { useParams } from "react-router-dom";
 import LayoutRecruiter from "../LayoutRecruiter";
@@ -11,9 +11,10 @@ const ApplicationsPage = () => {
     const applications = useSelector((state) => state.applications);
     const token = useSelector((state) => state.token);
     const { jobId } = useParams();
+    const [job, setJob] = useState([]);
 
     const getApplications = async () => {
-        const response = await fetch(`http://localhost:3003/applications/${jobId}`, {
+        const response = await fetch(`http://localhost:3003/applications/jobs/${jobId}`, {
             method: "GET",
             headers: {Authorization: `Bearer ${token}`}
         });
@@ -22,8 +23,19 @@ const ApplicationsPage = () => {
         dispatch(setApplications({ applications: data }));
     };
 
+    const getJob = async () => {
+        const response = await fetch(`http://localhost:3003/jobs/${jobId}`, {
+            method: "GET",
+            headers: {Authorization: `Bearer ${token}`}
+        })
+
+        const data = await response.json();
+        setJob(data);
+    }
+
     useEffect(() => {
-        getApplications()
+        getApplications();
+        getJob();
     }, [])
 
     const formattedApplications = applications.map((application) => ({
@@ -42,7 +54,7 @@ const ApplicationsPage = () => {
         <LayoutRecruiter>
             <div className="flex-col">
                 <div className="flex-1 space-y-4 p-8 pt-6">
-                    <ApplicationClient data={formattedApplications} />
+                    <ApplicationClient data={formattedApplications} title={job.title} />
                 </div>
             </div>
         </LayoutRecruiter>
