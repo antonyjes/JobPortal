@@ -47,7 +47,7 @@ const JobsForApplications = () => {
         <Separator />
         <section className="space-y-6 pb-4 pt-3 md:pb-6 md:pt-5 lg:py-16">
           <div className="container grid grid-cols-1 md:grid-cols-3 gap-4">
-            {jobs &&
+            {jobs && jobs.length > 0 ? (
               jobs.slice(offset, offset + PER_PAGE).map((job) => (
                 <div
                   className="max-w-sm rounded overflow-hidden shadow-lg"
@@ -60,7 +60,7 @@ const JobsForApplications = () => {
                     <h3>{job.jobType}</h3>
                   </div>
                   <div className="px-6 pt-2 pb-2">
-                    {job.requirements.length >= 1 &&
+                    {job.requirements?.length >= 1 &&
                       job.requirements.map((requirement) => (
                         <span
                           key={requirement}
@@ -73,13 +73,18 @@ const JobsForApplications = () => {
                   <div className="flex w-full justify-end m-0">
                     <Button
                       className="mb-2 mr-2"
-                      onClick={() => navigate(`/recruiter/applications/${job._id}`)}
+                      onClick={() =>
+                        navigate(`/recruiter/applications/${job._id}`)
+                      }
                     >
                       See applicants
                     </Button>
                   </div>
                 </div>
-              ))}
+              ))
+            ) : (
+              <p>No jobs found.</p>
+            )}
           </div>
           <div className="flex justify-center mt-4">
             <ReactPaginate
