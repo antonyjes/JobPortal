@@ -31,6 +31,7 @@ export const CellAction = ({data}) => {
     return(
         <>  
             <ModalApplication
+                key={data._id}
                 showModal={showModal}
                 setShowModal={setShowModal}
                 currentApplication={data}
