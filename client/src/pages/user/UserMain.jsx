@@ -58,10 +58,15 @@ const UserMain = () => {
                     className="max-w-sm rounded overflow-hidden shadow-lg"
                   >
                     <div className="px-6 py-2">
-                      <div className="font-bold text-xl mb-2">
-                        {userJob.jobTitle.toUpperCase()}
-                      </div>
-                      <h3><span className="font-bold">Status: </span>{userJob.status}</h3>
+                      {userJob.jobTitle && (
+                        <div className="font-bold text-xl mb-2">
+                          {userJob.jobTitle.toUpperCase()}
+                        </div>
+                      )}
+                      <h3>
+                        <span className="font-bold">Status: </span>
+                        {userJob.status}
+                      </h3>
                     </div>
                     <div className="flex w-full justify-end m-0">
                       <Button
@@ -95,9 +100,9 @@ const UserMain = () => {
       </LayoutUser>
       {showModal && (
         <ModalUserJob
-            showModal={showModal}
-            setShowModal={setShowModal}
-            currentUserJob={currentUserJob}
+          showModal={showModal}
+          setShowModal={setShowModal}
+          currentUserJob={currentUserJob}
         />
       )}
     </>
