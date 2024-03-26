@@ -23,6 +23,15 @@ export const getApplicationsByJob = async (req, res) => {
     }
 }
 
+export const getAcceptedApplications = async (req, res) => {
+    try {
+        const applications = await Application.find({ status: "Selected" });
+        res.status(201).json(applications);
+    } catch (error) {
+        res.status(409).json({ message: error.message });
+    }
+}
+
 //CREATE
 export const createApplication = async (req, res) => {
     try {
