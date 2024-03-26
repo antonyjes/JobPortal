@@ -10,8 +10,8 @@ const ApplicationsPageAdmin = () => {
     const applications = useSelector((state) => state.applications);
     const token = useSelector((state) => state.token);
     
-    const getApplications = async () => {
-        const response = await fetch("http://localhost:3003/applications/admin", {
+    const getAcceptedApplications = async () => {
+        const response = await fetch("http://localhost:3003/applications/admin/accepted", {
             method: "GET",
             headers: {Authorization: `Bearer ${token}`}
         });
@@ -21,7 +21,7 @@ const ApplicationsPageAdmin = () => {
     };
 
     useEffect(() => {
-        getApplications()
+        getAcceptedApplications()
     }, [])
 
     const formattedApplications = applications.map((application) => ({
