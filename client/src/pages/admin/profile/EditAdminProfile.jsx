@@ -1,14 +1,20 @@
 import { LayoutProfile } from "@/components/layout-profile";
 import LayoutAdmin from "../LayoutAdmin";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import Dropzone from "react-dropzone";
 import { Button } from "@/components/ui/button";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
+import { setLogin } from "@/state";
 
 const EditAdminProfile = () => {
   const user = useSelector((state) => state.user);
+  const token = useSelector((state) => state.token);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [firstName, setFirstName] = useState(user?.firstName || "");
   const [lastName, setLastName] = useState(user?.lastName || "");
   const [email, setEmail] = useState(user?.email || "");
@@ -21,10 +27,45 @@ const EditAdminProfile = () => {
     setImageFilename(files[0].name);
   };
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append("firstName", firstName);
+    formData.append("lastName", lastName);
+    formData.append("email", email);
+    formData.append("password", password);
+    formData.append("picture", imageValue);
+    formData.append("picturePath", imageFilename);
+
+    const updatedAdminResponse = await fetch(
+        `http://localhost:3003/admins/${user._id}/edit`,
+        {
+            method: "PATCH",
+            headers: { Authorization: `Bearer ${token}`},
+            body: formData,
+        }
+    );
+
+    const updatedAdmin = await updatedAdminResponse.json();
+
+    if (updatedAdmin) {
+        toast.success("Admin updated!");
+        navigate("/admin/home");
+        dispatch(
+            setLogin(
+                {
+                    user: updatedAdmin,
+                    token: token,
+                }
+            )
+        )
+    }
+  }
+
   return (
     <LayoutAdmin>
       <LayoutProfile>
-        <form>
+        <form onSubmit={handleSubmit}>
           <div className="grid gap-2 grid-cols-2 mb-4">
             <div className="grid gap-1">
               <Label>First Name</Label>
