@@ -19,6 +19,7 @@ import UserJob from "./pages/user/jobs/UserJob"
 import JobsForApplications from "./pages/recruiter/applications/JobsForApplications"
 import ApplicationsPage from "./pages/recruiter/applications/ApplicationsPage"
 import ApplicationsPageAdmin from "./pages/admin/applications/ApplicationsPageAdmin"
+import EditAdminProfile from "./pages/admin/profile/EditAdminProfile"
 
 function App() {
   const isAuth = Boolean(useSelector((state) => state.token));
@@ -39,6 +40,7 @@ function App() {
           <Route path="/admin/home" element={isAuth && isAdmin ? <AdminMain /> : <Navigate to="/" />} />
           <Route path="/admin/recruiters" element={isAuth && isAdmin ? <RecruitersPage /> : <Navigate to="/" />} />
           <Route path="/admin/applications" element={isAuth && isAdmin ? <ApplicationsPageAdmin /> : <Navigate to="/" />} />
+          <Route path="/admin/profile" element={isAuth && isAdmin ? <EditAdminProfile /> : <Navigate to="/" />} />
           <Route path="/user/home" element={isAuth && isUser ? <UserMain /> : <Navigate to="/" />} />
           <Route path="/user/jobs" element={isAuth && isUser ? <UserJobs /> : <Navigate to="/" />} />
           <Route path="/user/jobs/:jobId" element={isAuth && isUser ? <UserJob /> : <Navigate to="/" />} />
