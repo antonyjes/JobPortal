@@ -17,6 +17,7 @@ import applicationRoutes from "./routes/application.js";
 import { createRecruiter, editRecruiter } from "./controllers/recruiter.js";
 import { verifyToken } from "./middleware/auth.js";
 import { editAdmin } from "./controllers/admin.js";
+import { editUser } from "./controllers/user.js";
 
 //CONFIGURATIONS
 const __filename = fileURLToPath(import.meta.url);
@@ -82,6 +83,7 @@ app.post(
 app.post("/recruiters/create", recruiterUpload.single("picture"), createRecruiter);
 app.patch("/recruiters/:recruiterId/edit", verifyToken, recruiterUpload.single("picture"), editRecruiter);
 app.patch("/admins/:adminId/edit", verifyToken, adminUpload.single("picture"), editAdmin);
+app.patch("/users/:userId/edit", verifyToken, userUpload.fields([{name: "picture", maxCount: 1}, {name: "cvFile", maxCount: 1}]), editUser);
 
 //ROUTES
 app.use("/auth", authRoutes);
