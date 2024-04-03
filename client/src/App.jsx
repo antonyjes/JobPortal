@@ -20,6 +20,8 @@ import JobsForApplications from "./pages/recruiter/applications/JobsForApplicati
 import ApplicationsPage from "./pages/recruiter/applications/ApplicationsPage"
 import ApplicationsPageAdmin from "./pages/admin/applications/ApplicationsPageAdmin"
 import EditAdminProfile from "./pages/admin/profile/EditAdminProfile"
+import EditUserProfile from "./pages/user/profile/EditUserProfile"
+import EditRecruiterProfile from "./pages/recruiter/profile/EditRecruiterProfile"
 
 function App() {
   const isAuth = Boolean(useSelector((state) => state.token));
@@ -44,12 +46,14 @@ function App() {
           <Route path="/user/home" element={isAuth && isUser ? <UserMain /> : <Navigate to="/" />} />
           <Route path="/user/jobs" element={isAuth && isUser ? <UserJobs /> : <Navigate to="/" />} />
           <Route path="/user/jobs/:jobId" element={isAuth && isUser ? <UserJob /> : <Navigate to="/" />} />
+          <Route path="/user/profile" element={isAuth && isUser ? <EditUserProfile /> : <Navigate to="/" />} />
           <Route path="/recruiter/home" element={isAuth && isRecruiter ? <RecruiterMain /> : <Navigate to="/" />} />
           <Route path="/recruiter/jobs" element={isAuth && isRecruiter ? <JobsPage /> : <Navigate to="/" />} />
           <Route path="/recruiter/jobs/new" element={isAuth && isRecruiter ? <NewJob /> : <Navigate to="/" />} />
           <Route path="/recruiter/jobs/:jobId" element={isAuth && isRecruiter ? <EditJob /> : <Navigate to="/" />} />
           <Route path="/recruiter/applications" element={isAuth && isRecruiter ? <JobsForApplications /> : <Navigate to="/" />} />
           <Route path="/recruiter/applications/:jobId" element={isAuth && isRecruiter ? <ApplicationsPage /> : <Navigate to="/" />} />
+          <Route path="/recruiter/profile" element={isAuth && isRecruiter ? <EditRecruiterProfile /> : <Navigate to="/" />} />
         </Routes>
       </BrowserRouter>
       <ToastContainer />
