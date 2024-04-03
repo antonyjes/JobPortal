@@ -30,6 +30,15 @@ export const getJob = async (req, res) => {
   }
 };
 
+export const countJobs = async (req, res) => {
+  try {
+    const totalJobs = await Job.countDocuments({});
+    res.status(200).json(totalJobs);
+  } catch (error) {
+    res.status(409).json({ message: error.message });    
+  }
+}
+
 //CREATE
 export const createJob = async (req, res) => {
   try {
