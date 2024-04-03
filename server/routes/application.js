@@ -1,6 +1,6 @@
 import express from "express";
 import { verifyToken } from "../middleware/auth.js";
-import { createApplication, editApplication, getAcceptedApplications, getApplicationsByJob, getUserApplications } from "../controllers/application.js";
+import { countApplications, createApplication, editApplication, getAcceptedApplications, getApplicationsByJob, getUserApplications } from "../controllers/application.js";
 
 const router = express.Router();
 
@@ -8,6 +8,7 @@ const router = express.Router();
 router.get("/:userId", verifyToken, getUserApplications);
 router.get("/jobs/:jobId", verifyToken, getApplicationsByJob);
 router.get("/admin/accepted", verifyToken, getAcceptedApplications);
+router.get("/count/all", verifyToken, countApplications);
 
 //CREATE
 router.post("/create", verifyToken, createApplication);
