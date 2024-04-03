@@ -1,6 +1,6 @@
 import express from "express";
 import { verifyToken } from "../middleware/auth.js";
-import { createJob, deleteJob, editJob, getJob, getJobs, getPublicJobs } from "../controllers/job.js";
+import { countJobs, createJob, deleteJob, editJob, getJob, getJobs, getPublicJobs } from "../controllers/job.js";
 
 const router = express.Router();
 
@@ -9,6 +9,7 @@ router.get("/", verifyToken, getJobs);
 router.get("/public", getPublicJobs);
 router.get("/:jobId", verifyToken, getJob);
 router.get("/:jobId/public", getJob);
+router.get("/count/all", verifyToken, countJobs);
 
 //CREATE
 router.post("/create", verifyToken, createJob);
