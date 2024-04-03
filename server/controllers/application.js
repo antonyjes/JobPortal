@@ -32,6 +32,15 @@ export const getAcceptedApplications = async (req, res) => {
     }
 }
 
+export const countApplications = async (req, res) => {
+    try {
+        const totalApplications = await Application.countDocuments({});
+        res.status(201).json(totalApplications);
+    } catch (error) {
+        res.status(409).json({ message: error.message });
+    }
+}
+
 //CREATE
 export const createApplication = async (req, res) => {
     try {
