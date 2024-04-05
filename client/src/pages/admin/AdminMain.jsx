@@ -46,7 +46,7 @@ const AdminMain = () => {
         countRecruiters();
         countJobs();
         countApplications();
-    })
+    }, []);
 
     return(
         <LayoutAdmin>
