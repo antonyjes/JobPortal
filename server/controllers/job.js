@@ -1,3 +1,4 @@
+import Application from "../models/Application.js";
 import Job from "../models/Job.js";
 import Recruiter from "../models/Recruiter.js";
 
@@ -105,6 +106,12 @@ export const editJob = async (req, res) => {
       },
       { new: true }
     );
+    
+    await Application.updateMany(
+      { jobId: jobId },
+      { jobTitle: jobTitle}
+    );
+
     res.status(200).json(updatedJob);
   } catch (error) {
     res.status(409).json({ message: error.message });

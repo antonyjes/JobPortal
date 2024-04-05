@@ -1,6 +1,7 @@
 import User from "../models/User.js";
 import fs from "fs-extra";
 import bcrypt from "bcrypt";
+import Application from "../models/Application.js";
 
 //UPDATE
 export const editUser = async (req, res) => {
@@ -47,6 +48,12 @@ export const editUser = async (req, res) => {
             cvPath,
             ...(password && { password: passwordHash }),
         }, {new: true});
+
+        await Application.updateMany(
+            { userId: userId },
+            { userName: `${firstName} ${lastName}` },
+            { userCvPath: cvPath }
+        )
 
         delete updatedUser.password;
         res.status(200).json(updatedUser);
