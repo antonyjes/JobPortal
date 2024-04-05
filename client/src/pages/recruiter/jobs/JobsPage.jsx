@@ -21,7 +21,7 @@ const JobsPage = () => {
 
     useEffect(() => {
         getJobs()
-    }, [])
+    }, []);
 
     return(
         <>
