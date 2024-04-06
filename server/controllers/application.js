@@ -3,6 +3,15 @@ import User from "../models/User.js";
 import Job from "../models/Job.js";
 
 //READ
+export const getApplications = async (req, res) => {
+    try {
+        const applications = await Application.find();
+        res.status(200).json(applications);
+    } catch (error) {
+        res.status(409).json({ message: error.message });
+    }
+}
+
 export const getUserApplications = async (req, res) => {
     try {
         const { userId } = req.params;
