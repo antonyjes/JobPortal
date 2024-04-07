@@ -94,6 +94,10 @@ const AdminMain = () => {
                         </CardContent>
                     </Card>
                 </div>
+                <Separator />
+                <div className="flex justify-center">
+                    {/* BAR CHART FOR JOBS AND STATUS OF APPLICATIONS */}
+                </div>
             </div>
         </LayoutAdmin>
     )
