@@ -5,35 +5,55 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { UserRound, Building2 } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import { PieChart } from "@/components/pie-chart";
 
 const RecruiterMain = () => {
-    const token = useSelector((state) => state.token);
+    const token = useSelector((state) => state.token);  
     const [totalApplications, setTotalApplications] = useState(0);
     const [totalJobs, setTotalJobs] = useState(0);
+    const [applicationsStatusData, setApplicationsStatusData] = useState({});
+    const [jobsStatusData, setJobsStatusData] = useState({});
     
-    const countJobs = async () => {
-        const response = await fetch("http://localhost:3003/jobs/count/all", {
+    const getApplications = async () => {
+        const response = await fetch("http://localhost:3003/applications", {
             method: "GET",
-            headers: { Authorization: `Bearer ${token}` },
+            headers: {Authorization: `Bearer ${token}`}
         });
 
         const data = await response.json();
-        setTotalJobs(data);
-    }
+        const statusData = countStatusData(data);
+        setApplicationsStatusData(statusData);
+        setTotalApplications(data?.length);
+    };
 
-    const countApplications = async () => {
-        const response = await fetch("http://localhost:3003/applications/count/all", {
+    const getJobs = async () => {
+        const response = await fetch("http://localhost:3003/jobs", {
             method: "GET",
-            headers: { Authorization: `Bearer ${token}` },
+            headers: {Authorization: `Bearer ${token}`}
         });
 
         const data = await response.json();
-        setTotalApplications(data);
+        const statusData = countStatusData(data);
+        setJobsStatusData(statusData);
+        setTotalJobs(data?.length);
+    };
+    
+    const countStatusData = (data) => {
+        const statusCount = {};
+        data.forEach(item => {
+            if (statusCount[item.status]) {
+                statusCount[item.status] ++;
+            } else {
+                statusCount[item.status] = 1;
+            }
+        });
+
+        return statusCount;
     }
 
     useEffect(() => {
-        countApplications();
-        countJobs();
+        getApplications();
+        getJobs();
     }, []);
 
     return(
@@ -68,6 +88,11 @@ const RecruiterMain = () => {
                             </div>
                         </CardContent>
                     </Card>
+                </div>
+                <Separator />
+                <div className="flex flex-row gap-2">
+                    {Object.keys(applicationsStatusData).length > 0 && <PieChart key={"application"} data={applicationsStatusData} title="Applications Chart" />}
+                    {Object.keys(jobsStatusData).length > 0 && <PieChart key={"job"} data={jobsStatusData} title="Jobs Chart" />}
                 </div>
             </div>
         </LayoutRecruiter>
