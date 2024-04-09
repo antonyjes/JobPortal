@@ -42,7 +42,7 @@ const RecruiterMain = () => {
         const statusCount = {};
         data.forEach(item => {
             if (statusCount[item.status]) {
-                statusCount[item.status] ++;
+                statusCount[item.status]++;
             } else {
                 statusCount[item.status] = 1;
             }
