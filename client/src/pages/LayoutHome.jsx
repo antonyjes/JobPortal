@@ -17,7 +17,7 @@ import { useNavigate } from "react-router-dom";
 
 const itemsHome = [
   { title: "Inicio", href: "/" },
-  { title: "Jobs", href: "/jobs" },
+  { title: "Empleos", href: "/jobs" },
 ];
 
 const LayoutHome = ({ children, isAuth = false, items = itemsHome }) => {
