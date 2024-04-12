@@ -3,9 +3,9 @@ import LayoutHome from "../LayoutHome"
 const LayoutAdmin = ({children}) => {
     const items = [
         {title: "Dashboard", href: "/admin/home"},
-        {title: "Recruiters", href: "/admin/recruiters"},
-        {title: "Applications", href: "/admin/applications"},
-        {title: "Profile", href: "/admin/profile"},
+        {title: "Reclutadores", href: "/admin/recruiters"},
+        {title: "Aplicaciones", href: "/admin/applications"},
+        {title: "Perfil", href: "/admin/profile"},
     ]
 
     return(
