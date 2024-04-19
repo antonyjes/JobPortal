@@ -70,17 +70,17 @@ const Register = () => {
               <div className="flex flex-col space-y-2 text-center">
                 <Command className="mx-auto h-6 w-6" />
                 <h1 className="text-2xl font-semibold tracking-tight">
-                  Create an account
+                  Crear tu cuenta
                 </h1>
                 <p className="text-sm text-muted-foreground">
-                  Enter your email below to create your account
+                  Crea tu perfil y aplica para los trabajos
                 </p>
               </div>
               <div className="grid gap-6">
                 <form onSubmit={handleSubmit}>
                   <div className="grid gap-2 grid-cols-2 mb-4">
                     <div className="grid gap-1">
-                      <Label htmlFor="firstName">First Name</Label>
+                      <Label htmlFor="firstName">Nombres</Label>
                       <Input
                         id="firstName"
                         type="text"
@@ -89,7 +89,7 @@ const Register = () => {
                       />
                     </div>
                     <div className="grid gap-1">
-                      <Label htmlFor="lastName">Last Name</Label>
+                      <Label htmlFor="lastName">Apellidos</Label>
                       <Input
                         id="lastName"
                         type="text"
@@ -109,7 +109,7 @@ const Register = () => {
                       />
                     </div>
                     <div className="grid gap-1">
-                      <Label htmlFor="password">Password</Label>
+                      <Label htmlFor="password">Contraseña</Label>
                       <Input
                         id="password"
                         type="password"
@@ -120,7 +120,7 @@ const Register = () => {
                   </div>
                   <div className="grid gap-2 grid-cols-2 mb-4">
                     <div className="grid gap-1">
-                      <Label htmlFor="roleJob">Role Job</Label>
+                      <Label htmlFor="roleJob">Rol de trabajo</Label>
                       <Input
                         id="roleJob"
                         type="text"
@@ -129,7 +129,7 @@ const Register = () => {
                       />
                     </div>
                     <div className="grid gap-1">
-                      <Label htmlFor="city">City</Label>
+                      <Label htmlFor="city">Ciudad</Label>
                       <Input
                         id="city"
                         type="text"
@@ -139,7 +139,7 @@ const Register = () => {
                     </div>
                   </div>
                   <div className="grid gap-1 mb-4">
-                    <Label>Image</Label>
+                    <Label>Foto de perfil</Label>
                     <Dropzone
                       acceptedFiles=".jpg,.jpeg,.png"
                       multiple={false}
@@ -177,9 +177,9 @@ const Register = () => {
                               {imageFilename === "" ? (
                             <p className="mb-2 text-sm text-gray-500 dark:text-gray-400">
                               <span className="font-semibold">
-                                Click to upload
+                                Click para subir
                               </span>{" "}
-                              or drag and drop
+                              o arrastra y suelta
                             </p>
                           ) : (
                             <p className="mb-2 text-sm text-gray-500 dark:text-gray-400">
@@ -231,9 +231,9 @@ const Register = () => {
                               {cvFilename === "" ? (
                             <p className="mb-2 text-sm text-gray-500 dark:text-gray-400">
                               <span className="font-semibold">
-                                Click to upload
+                                Click para subir
                               </span>{" "}
-                              or drag and drop
+                              o arrastra y suelta
                             </p>
                           ) : (
                             <p className="mb-2 text-sm text-gray-500 dark:text-gray-400">
@@ -247,7 +247,7 @@ const Register = () => {
                     </Dropzone>
                   </div>
                   <div className="pt-6 space-x-2 flex items-center justify-end w-full">
-                    <Button type="submit">Continue</Button>
+                    <Button type="submit">Enviar</Button>
                   </div>
                 </form>
               </div>
