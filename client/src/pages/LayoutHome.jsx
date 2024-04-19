@@ -45,10 +45,10 @@ const LayoutHome = ({ children, isAuth = false, items = itemsHome }) => {
                     <DropdownMenuLabel>{user?.email}</DropdownMenuLabel>
                     <DropdownMenuLabel>{user?.role}</DropdownMenuLabel>
                     <DropdownMenuSeparator />
-                    <DropdownMenuLabel>Actions</DropdownMenuLabel>
+                    <DropdownMenuLabel>Acciones</DropdownMenuLabel>
                     <DropdownMenuItem onClick={() => navigate(`/${user?.role.toLowerCase()}/profile`)}>
                       <Edit className="mr-2 h-4 w-4" />
-                      Edit profile
+                      Editar perfil
                     </DropdownMenuItem>
                   </DropdownMenuContent>
                 </DropdownMenu>
@@ -59,7 +59,7 @@ const LayoutHome = ({ children, isAuth = false, items = itemsHome }) => {
                 )}
                 onClick={() => dispatch(setLogout())}
               >
-                Sign out
+                Cerrar sesión
               </button>
             </nav>
           ) : (
@@ -71,7 +71,7 @@ const LayoutHome = ({ children, isAuth = false, items = itemsHome }) => {
                   "px-4"
                 )}
               >
-                Login
+                Ingresar
               </a>
               <a
                 href="/register"
@@ -80,7 +80,7 @@ const LayoutHome = ({ children, isAuth = false, items = itemsHome }) => {
                   "px-4"
                 )}
               >
-                Register
+                Registrarse
               </a>
             </nav>
           )}
