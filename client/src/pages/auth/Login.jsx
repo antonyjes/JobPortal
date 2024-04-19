@@ -53,8 +53,8 @@ const Login = () => {
                         <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
                             <div className="flex flex-col space-y-2 text-center">
                                 <Command className="mx-auto h-6 w-6" />
-                                <h1 className="text-2xl font-semibold tracking-tight">Sign In</h1>
-                                <p className="text-sm text-muted-foreground">Enter your email and password to enter</p>
+                                <h1 className="text-2xl font-semibold tracking-tight">Ingresar</h1>
+                                <p className="text-sm text-muted-foreground">Ingresa tu email y contraseña para ingresar</p>
                             </div>
                             <div className="grid gap-6">
                                 <form className="grid gap-6" onSubmit={handleSubmit}>
@@ -74,7 +74,7 @@ const Login = () => {
                                     <div className="grip gap-2">
                                         <div className="grid gap-1">
                                             <Label htmlFor="password">
-                                                Password
+                                                Contraseña
                                             </Label>
                                             <Input
                                                 id="password"
@@ -85,11 +85,11 @@ const Login = () => {
                                         </div>
                                     </div>
                                     <div className="flex justify-center">
-                                        <Button className="w-[25%]">Send</Button>
+                                        <Button className="w-[25%]">Entrar</Button>
                                     </div>
                                 </form>
                             </div>
-                            <p className="px-8 text-center text-sm text-muted-foreground">If you don&apos;t have an account <a className="underline underline-offset-4 hover:text-primary" href="/register">click here</a>.</p>
+                            <p className="px-8 text-center text-sm text-muted-foreground">Si no tienes una cuenta <a className="underline underline-offset-4 hover:text-primary" href="/register">click aquí</a>.</p>
                         </div>
                     </div>
                 </div>
