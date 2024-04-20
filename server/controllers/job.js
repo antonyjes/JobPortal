@@ -109,11 +109,12 @@ export const editJob = async (req, res) => {
     
     await Application.updateMany(
       { jobId: jobId },
-      { jobTitle: jobTitle}
+      { jobTitle: title }
     );
 
     res.status(200).json(updatedJob);
   } catch (error) {
+    console.log(error);
     res.status(409).json({ message: error.message });
   }
 };
