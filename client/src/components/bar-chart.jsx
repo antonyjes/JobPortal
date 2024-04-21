@@ -6,8 +6,8 @@ export const BarChart = ({data}) => {
 
     const options = {
         chart: {
-            title: "Applications Performance",
-            subtitle: "Status of applications: 2024"
+            title: "Rendimiento de Aplicaciones",
+            subtitle: "Estado de aplicaciones: 2024"
         }
     }
 
