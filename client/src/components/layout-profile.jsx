@@ -1,4 +1,4 @@
-import { Command } from "lucide-react";
+import { LogoImage } from "./logo-image";
 
 export const LayoutProfile = ({children}) => {
   return (
@@ -7,11 +7,11 @@ export const LayoutProfile = ({children}) => {
         <div className="lg:p-8">
           <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[500px]">
             <div className="flex flex-col space-y-2 text-center">
-              <Command className="mx-auto h-6 w-6" />
+              <LogoImage className="mx-auto h-20 w-20" />
               <h1 className="text-2xl font-semibold tracking-tight">
-                Edit profile
+                Editar Perfil
               </h1>
-              <p>Change the data which you want to update</p>
+              <p>Cambia los datos que deseas actualizar</p>
             </div>
             <div className="grid gap-6">
                 {children}
