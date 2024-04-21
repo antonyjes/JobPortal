@@ -12,7 +12,7 @@ const HomePage = () => {
                         Crea tu perfil y aplica para los trabajos
                     </p>
                     <div className="space-x-4">
-                        <a href="/register" className={cn(buttonVariants({size: "lg"}))}>
+                        <a href="/jobs" className={cn(buttonVariants({size: "lg"}))}>
                             Ver trabajos
                         </a>
                     </div>
