@@ -82,13 +82,13 @@ const AdminMain = () => {
     return(
         <LayoutAdmin>
             <div className="space-y-4 p-8 pt-6">
-                <Heading title="Dashboard Admin" description="Overview your status" />
+                <Heading title="Panel de administrador" description="Administra tus recursos" />
                 <Separator />
                 <div className="grid gap-4 grid-cols-3">
                     <Card>
                         <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                             <CardTitle className="text-sm font-medium">
-                                Recruiters
+                                Reclutadores
                             </CardTitle>
                             <UserRound className="h-4 w-4 text-muted-foreground" />
                         </CardHeader>
@@ -101,7 +101,7 @@ const AdminMain = () => {
                     <Card>
                         <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                             <CardTitle className="text-sm font-medium">
-                                Jobs
+                                Empleos
                             </CardTitle>
                             <Building2 className="h-4 w-4 text-muted-foreground" />
                         </CardHeader>
@@ -114,7 +114,7 @@ const AdminMain = () => {
                     <Card>
                         <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                             <CardTitle className="text-sm font-medium">
-                                Applicants
+                                Aplicantes
                             </CardTitle>
                             <UsersRound className="h-4 w-4 text-muted-foreground" />
                         </CardHeader>
