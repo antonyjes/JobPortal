@@ -3,15 +3,15 @@ import { CellAction } from "./cell-action";
 export const columns = [
     {
         accessorKey: "jobTitle",
-        header: "Job"
+        header: "Empleo"
     },
     {
         accessorKey: "userName",
-        header: "Username"
+        header: "Nombre de usuario"
     },
     {
         accessorKey: "createdAt",
-        header: "Created at"
+        header: "Creado"
     },
     {
         id: "actions",
