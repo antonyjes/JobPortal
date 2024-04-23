@@ -4,9 +4,9 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import LayoutHome from "../LayoutHome";
 import { Button } from "@/components/ui/button";
-import { Command } from "lucide-react";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
+import { LogoImage } from "@/components/logo-image";
 
 const Login = () => {
     const [email, setEmail] = useState("");
@@ -52,7 +52,7 @@ const Login = () => {
                     <div className="lg:p-8">
                         <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
                             <div className="flex flex-col space-y-2 text-center">
-                                <Command className="mx-auto h-6 w-6" />
+                                <LogoImage className="mx-auto h-20 w-20" />
                                 <h1 className="text-2xl font-semibold tracking-tight">Ingresar</h1>
                                 <p className="text-sm text-muted-foreground">Ingresa tu email y contraseña para ingresar</p>
                             </div>
