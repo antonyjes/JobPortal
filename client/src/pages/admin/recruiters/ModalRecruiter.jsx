@@ -98,13 +98,13 @@ const ModalRecruiter = ({
     <Dialog open={showModal} onOpenChange={setShowModal}>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>{operation}</DialogTitle>
+          <DialogTitle>{operation === "Create" ? "Crear nuevo" : "Editar"}</DialogTitle>
         </DialogHeader>
         <div className="space-y-4 py-2 pb-4">
           <form onSubmit={handleSubmit}>
             <div className="grid gap-2 grid-cols-2 mb-4">
               <div className="grid gap-1">
-                <Label htmlFor="firstName">First Name</Label>
+                <Label htmlFor="firstName">Nombres</Label>
                 <Input
                   id="firstName"
                   type="text"
@@ -113,7 +113,7 @@ const ModalRecruiter = ({
                 />
               </div>
               <div className="grid gap-1">
-                <Label htmlFor="lastName">Last Name</Label>
+                <Label htmlFor="lastName">Apellidos</Label>
                 <Input
                   id="lastName"
                   type="text"
@@ -133,7 +133,7 @@ const ModalRecruiter = ({
                 />
               </div>
               <div className="grid gap-1">
-                <Label htmlFor="password">Password</Label>
+                <Label htmlFor="password">Contraseña</Label>
                 <Input
                   id="password"
                   type="password"
@@ -143,7 +143,7 @@ const ModalRecruiter = ({
               </div>
             </div>
             <div className="grid gap-1">
-                <Label>Image</Label>
+                <Label>Foto de perfil</Label>
                 <Dropzone
                   acceptedFiles=".jpg,.jpeg,.png"
                   multiple={false}
@@ -179,9 +179,9 @@ const ModalRecruiter = ({
                           {imageFilename === "" ? (
                             <p className="mb-2 text-sm text-gray-500 dark:text-gray-400">
                               <span className="font-semibold">
-                                Click to upload
+                                Click para subir
                               </span>{" "}
-                              or drag and drop
+                              o arrastra y suelta
                             </p>
                           ) : (
                             <p className="mb-2 text-sm text-gray-500 dark:text-gray-400">
@@ -195,7 +195,7 @@ const ModalRecruiter = ({
                 </Dropzone>
               </div>
               <div className="pt-6 space-x-2 flex items-center justify-end w-full">
-                <Button type="submit">Continue</Button>
+                <Button type="submit">Continuar</Button>
               </div>
           </form>
         </div>
