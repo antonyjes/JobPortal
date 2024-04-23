@@ -3,11 +3,11 @@ import { CellAction } from "./cell-action";
 export const columns = [
     {
         accessorKey: "firstName",
-        header: "First Name"
+        header: "Nombres"
     },
     {
         accessorKey: "lastName",
-        header: "Last Name"
+        header: "Apellidos"
     },
     {
         accessorKey: "email",
@@ -15,7 +15,7 @@ export const columns = [
     },
     {
         accessorKey: "picturePath",
-        header: "Picture",
+        header: "Foto de perfil",
         cell: ({row}) => (
             <div className="flex items-center">
                 <img className="w-[6rem] h-[6rem] p-2 object-cover rounded-full" src={`http://localhost:3003/assets/recruiters/${row.original.picturePath}`} />
