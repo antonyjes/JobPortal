@@ -59,13 +59,13 @@ const RecruiterMain = () => {
     return(
         <LayoutRecruiter>
             <div className="space-y-4 p-8 pt-6">
-                <Heading title="Dashboard Recruiter" description="Overview your status" />
+                <Heading title="Panel del reclutador" description="Administra tus recursos" />
                 <Separator />
                 <div className="grid gap-4 grid-cols-3">
                     <Card>
                         <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                             <CardTitle className="text-sm font-medium">
-                                Applications
+                                Aplicantes
                             </CardTitle>
                             <UserRound className="h-4 w-4 text-muted-foreground" />
                         </CardHeader>
@@ -78,7 +78,7 @@ const RecruiterMain = () => {
                     <Card>
                         <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                             <CardTitle className="text-sm font-medium">
-                                Jobs
+                                Empleos
                             </CardTitle>
                             <Building2 className="h-4 w-4 text-muted-foreground" />
                         </CardHeader>
@@ -91,8 +91,8 @@ const RecruiterMain = () => {
                 </div>
                 <Separator />
                 <div className="flex flex-row gap-2">
-                    {Object.keys(applicationsStatusData).length > 0 && <PieChart key={"application"} data={applicationsStatusData} title="Applications Chart" />}
-                    {Object.keys(jobsStatusData).length > 0 && <PieChart key={"job"} data={jobsStatusData} title="Jobs Chart" />}
+                    {Object.keys(applicationsStatusData).length > 0 && <PieChart key={"application"} data={applicationsStatusData} title="Gráfica de aplicantes" />}
+                    {Object.keys(jobsStatusData).length > 0 && <PieChart key={"job"} data={jobsStatusData} title="Gráfica de empleantes" />}
                 </div>
             </div>
         </LayoutRecruiter>
