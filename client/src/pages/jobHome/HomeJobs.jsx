@@ -62,7 +62,7 @@ const HomeJobs = () => {
                     className="mb-2 mr-2"
                     onClick={() => navigate(`/jobs/${job._id}`)}
                   >
-                    Details
+                    Detalles
                   </Button>
                 </div>
               </div>
@@ -70,8 +70,8 @@ const HomeJobs = () => {
         </div>
         <div className="flex justify-center mt-4">
           <ReactPaginate
-            previousLabel={"← Previous"}
-            nextLabel={"Next →"}
+            previousLabel={"← Anterior"}
+            nextLabel={"Siguiente →"}
             pageCount={pageCount}
             onPageChange={handlePageClick}
             containerClassName={"pagination"}
