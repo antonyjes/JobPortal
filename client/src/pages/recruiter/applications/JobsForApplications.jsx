@@ -41,8 +41,8 @@ const JobsForApplications = () => {
     <LayoutRecruiter>
       <div className="space-y-4 p-8 pt-6">
         <Heading
-          title="Jobs for applications"
-          description="Choose a job to see the applicants"
+          title="Empleos para aplicantes"
+          description="Selecciona un empleo y mira a los aplicantes"
         />
         <Separator />
         <section className="space-y-6 pb-4 pt-3 md:pb-6 md:pt-5 lg:py-16">
@@ -77,19 +77,19 @@ const JobsForApplications = () => {
                         navigate(`/recruiter/applications/${job._id}`)
                       }
                     >
-                      See applicants
+                      Ver aplicantes
                     </Button>
                   </div>
                 </div>
               ))
             ) : (
-              <p>No jobs found.</p>
+              <p>No se econtraron resultados.</p>
             )}
           </div>
           <div className="flex justify-center mt-4">
             <ReactPaginate
-              previousLabel={"← Previous"}
-              nextLabel={"Next →"}
+              previousLabel={"← Anterior"}
+              nextLabel={"Siguiente →"}
               pageCount={pageCount}
               onPageChange={handlePageClick}
               containerClassName={"pagination"}
