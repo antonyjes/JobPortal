@@ -49,19 +49,19 @@ export const CellAction = ({data}) => {
             <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                     <Button variant="ghost" className="h-8 w-8 p-0">
-                        <span className="sr-only">Open menu</span>
+                        <span className="sr-only">Abrir menú</span>
                         <MoreHorizontal className="h-4 w-4" />
                     </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end">
-                    <DropdownMenuLabel>Actions</DropdownMenuLabel>
+                    <DropdownMenuLabel>Acciones</DropdownMenuLabel>
                     <DropdownMenuItem onClick={() => navigate(`/recruiter/jobs/${data._id}`)}>
                         <Edit className="mr-2 h-4 w-4" />
-                        Update
+                        Editar
                     </DropdownMenuItem>
                     <DropdownMenuItem onClick={() => setShowAlert(true)}>
                         <Trash className="mr-2 h-4 w-4" />
-                        Delete
+                        Eliminar
                     </DropdownMenuItem>
                 </DropdownMenuContent>
             </DropdownMenu>
