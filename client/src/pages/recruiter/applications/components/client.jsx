@@ -7,7 +7,7 @@ export const ApplicationClient = ({ data, title }) => {
     return(
         <>
             <div className="flex items-center justify-between">
-                <Heading title={`Applications for ${title}`} description="Manage your applicants for this job" />
+                <Heading title={`Aplicantes para ${title}`} description="Administra tus aplicantes para este trabajo" />
             </div>
             <Separator />
             <DataTable columns={columns} data={data} searchKey="userName" />
