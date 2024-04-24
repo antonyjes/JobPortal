@@ -43,18 +43,18 @@ const ModalApplication = ({showModal, setShowModal, currentApplication, getAppli
         <Dialog open={showModal} onOpenChange={setShowModal}>
             <DialogContent>
                 <DialogHeader>
-                    <DialogTitle>Edit Status</DialogTitle>
+                    <DialogTitle>Editar Estado</DialogTitle>
                 </DialogHeader>
                 <div className="space-y-4 py-2 pb-4">
                     <form onSubmit={handleSubmit}>
                         <div className="grid gap-1 mb-4">
-                            <Label>Applicant</Label>
+                            <Label>Aplicante</Label>
                             <Input disabled value={currentApplication?.userName} />
                         </div>
                         <div className="grid gap-1 mb-4">
-                            <Label>Status</Label>
+                            <Label>Estado</Label>
                             <select value={status} onChange={(e) => setStatus(e.target.value)} className="h-10 rounded-md border border-input text-sm">
-                                <option value="">Select a status:</option>
+                                <option value="">Selecciona un estado:</option>
                                 <option value="Sent">Sent</option>
                                 <option value="Seen">Seen</option>
                                 <option value="Inverview">Interview</option>
@@ -62,7 +62,7 @@ const ModalApplication = ({showModal, setShowModal, currentApplication, getAppli
                             </select>
                         </div>
                         <div className="grid gap-1 mb-4">
-                            <Label>Notes</Label>
+                            <Label>Notas</Label>
                             <ReactQuill
                                 theme="snow"
                                 value={notes}
@@ -71,7 +71,7 @@ const ModalApplication = ({showModal, setShowModal, currentApplication, getAppli
                             />
                         </div>
                         <div className="pt-6 space-x-2 flex items-center justify-end w-full mt-10">
-                            <Button type="submit">Continue</Button>
+                            <Button type="submit">Continuar</Button>
                         </div>
                     </form>
                 </div>
