@@ -28,7 +28,7 @@ const HomeJob = () => {
         <LayoutHome>
             <JobDetails jobData={jobData} />
             <div className="flex justify-center mt-4">
-                <Button onClick={() => navigate("/login")} className="w-[10rem]">Apply Job</Button>
+                <Button onClick={() => navigate("/login")} className="w-[10rem]">Postularse</Button>
             </div>
         </LayoutHome>
     )
