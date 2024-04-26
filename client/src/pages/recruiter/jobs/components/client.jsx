@@ -12,10 +12,10 @@ export const JobClient = ({ data }) => {
     return(
         <>
             <div className="flex items-center justify-between">
-                <Heading title="Jobs" description="Manage your jobs" />
+                <Heading title="Empleos" description="Administra tus empleos" />
                 <Button onClick={() => navigate("/recruiter/jobs/new")}>
                     <Plus className="mr-2 h-4 w-4" />
-                    Add New
+                    Añadir empleo
                 </Button>
             </div>
             <Separator />
