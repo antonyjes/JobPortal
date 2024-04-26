@@ -3,27 +3,27 @@ import { CellAction } from "./cell-action";
 export const columns = [
     {
         accessorKey: "title",
-        header: "Title"
+        header: "Título"
     },
     {
         accessorKey: "location",
-        header: "Location"
+        header: "Localización"
     },
     {
         accessorKey: "category",
-        header: "Category"
+        header: "Categoría"
     },
     {
         accessorKey: "jobType",
-        header: "Type of Job"
+        header: "Tipo de Trabajo"
     },
     {
         accessorKey: "salary",
-        header: "Salary"
+        header: "Salario"
     },
     {
         accessorKey: "recruiterName",
-        header: "Created by"
+        header: "Creado por"
     },
     {
         id: "actions",
