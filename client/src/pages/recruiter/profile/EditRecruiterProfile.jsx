@@ -68,7 +68,7 @@ const EditRecruiterProfile = () => {
         <form onSubmit={handleSubmit}>
           <div className="grid gap-2 grid-cols-2 mb-4">
             <div className="grid gap-1">
-              <Label>First Name</Label>
+              <Label>Nombres</Label>
               <Input
                 type="text"
                 onChange={(e) => setFirstName(e.target.value)}
@@ -76,7 +76,7 @@ const EditRecruiterProfile = () => {
               />
             </div>
             <div className="grid gap-1">
-              <Label>Last Name</Label>
+              <Label>Apellidos</Label>
               <Input
                 type="text"
                 onChange={(e) => setLastName(e.target.value)}
@@ -95,7 +95,7 @@ const EditRecruiterProfile = () => {
               />
             </div>
             <div className="grid gap-1">
-              <Label htmlFor="password">Password</Label>
+              <Label htmlFor="password">Contraseña</Label>
               <Input
                 id="password"
                 type="password"
@@ -105,7 +105,7 @@ const EditRecruiterProfile = () => {
             </div>
           </div>
           <div className="grid gap-1 mb-4">
-            <Label>Image</Label>
+            <Label>Foto de perfil</Label>
             <Dropzone
               acceptedFiles=".jpg,.jpeg,.png"
               multiple={false}
@@ -136,8 +136,8 @@ const EditRecruiterProfile = () => {
                       </svg>
                       {imageFilename === "" ? (
                         <p className="mb-2 text-sm text-gray-500 dark:text-gray-400">
-                          <span className="font-semibold">Click to upload</span>{" "}
-                          or drag and drop
+                          <span className="font-semibold">Click para subir</span>{" "}
+                          o arrastra tu imagen
                         </p>
                       ) : (
                         <p className="mb-2 text-sm text-gray-500 dark:text-gray-400">
@@ -151,7 +151,7 @@ const EditRecruiterProfile = () => {
             </Dropzone>
           </div>
           <div className="space-x-2 flex items-center justify-end w-full">
-            <Button type="submit">Update</Button>
+            <Button type="submit">Actualizar</Button>
           </div>
         </form>
       </LayoutProfile>
