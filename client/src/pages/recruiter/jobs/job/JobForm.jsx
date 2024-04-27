@@ -114,16 +114,16 @@ const JobForm = ({ jobData, setJobData }) => {
           <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[700px]">
             <div className="flex flex-col space-y-2 text-center">
               <h1 className="text-2xl font-semibold tracking-tight">
-                {action} a job
+                {action === "Create" ? "Crear" : "Editar"} Empleo
               </h1>
               <p className="text-sm text-muted-foreground">
-                Enter the job data below to {action.toLowerCase()} it
+                Crea un nuevo empleio o edita uno existente.
               </p>
             </div>
             <div className="grid gap-6">
               <form onSubmit={handleSubmit}>
                 <div className="grid gap-1 mb-4">
-                  <Label>Title</Label>
+                  <Label>Título</Label>
                   <Input
                     type="text"
                     onChange={(e) => setTitle(e.target.value)}
@@ -131,7 +131,7 @@ const JobForm = ({ jobData, setJobData }) => {
                   />
                 </div>
                 <div className="grid gap-1 mb-4">
-                  <Label>Description</Label>
+                  <Label>Descripción</Label>
                   <ReactQuill
                     theme="snow"
                     value={description}
@@ -141,7 +141,7 @@ const JobForm = ({ jobData, setJobData }) => {
                 </div>
                 <div className="grid gap-2 grid-cols-3 mb-4 mt-[3.5rem]">
                   <div className="grid gap-1">
-                    <Label>Location</Label>
+                    <Label>Localización</Label>
                     <Input
                       type="text"
                       onChange={(e) => setLocation(e.target.value)}
@@ -149,7 +149,7 @@ const JobForm = ({ jobData, setJobData }) => {
                     />
                   </div>
                   <div className="grid gap-1">
-                    <Label>Category</Label>
+                    <Label>Categoría</Label>
                     <Input
                       type="text"
                       onChange={(e) => setCategory(e.target.value)}
@@ -157,13 +157,13 @@ const JobForm = ({ jobData, setJobData }) => {
                     />
                   </div>
                   <div className="grid gap-1">
-                    <Label>Job Type</Label>
+                    <Label>Tipo de empleo</Label>
                     <select
                       value={jobType}
                       onChange={(e) => setJobType(e.target.value)}
                       className="h-10 rounded-md border border-input text-sm"
                     >
-                      <option value="">Select the job type:</option>
+                      <option value="">Selecciona el tipo de empleo:</option>
                       <option value="Full-time">Full-time</option>
                       <option value="Part-time">Part-time</option>
                       <option value="Remote">Remote</option>
@@ -171,7 +171,7 @@ const JobForm = ({ jobData, setJobData }) => {
                   </div>
                 </div>
                 <div className="grid gap-1 mb-4">
-                  <Label>Requirements <span>(máximo 3)</span></Label>
+                  <Label>Requerimientos <span>(máximo 3)</span></Label>
                   <div className="flex flex-row gap-2">
                     {requirements.map((item, index) => (
                       <div
@@ -179,7 +179,7 @@ const JobForm = ({ jobData, setJobData }) => {
                         className="flex flex-row gap-1 rounded-md bg-sky-300 p-1"
                       >
                         <p className="font-sans">{item}</p>
-                        <button onClick={() => handleDeleteRequirement(index)}>
+                        <button type="button" onClick={() => handleDeleteRequirement(index)}>
                           <X className="w-[1rem]" />
                         </button>
                       </div>
@@ -192,26 +192,26 @@ const JobForm = ({ jobData, setJobData }) => {
                       value={requirement}
                     />
                     <Button type="button" onClick={handleAddRequirement}>
-                      Add
+                      Añadir
                     </Button>
                   </div>
                 </div>
                 <div className="grid gap-2 grid-cols-2 mb-4">
                   <div className="grid gap-1">
-                    <Label>Status</Label>
+                    <Label>Estado</Label>
                     <select
                       value={status}
                       onChange={(e) => setStatus(e.target.value)}
                       className="h-10 rounded-md border border-input text-sm"
                     >
-                      <option value="">Select the status:</option>
+                      <option value="">Selecciona el estado:</option>
                       <option value="Open">Open</option>
                       <option value="Interviews">Interviews</option>
                       <option value="Closed">Closed</option>
                     </select>
                   </div>
                   <div className="grid gap-1">
-                    <Label>Salary</Label>
+                    <Label>Salario</Label>
                     <Input
                       type="number"
                       onChange={(e) => setSalary(e.target.value)}
@@ -220,7 +220,7 @@ const JobForm = ({ jobData, setJobData }) => {
                   </div>
                 </div>
                 <div className="pt-6 space-x-2 flex items-center justify-end w-full">
-                  <Button type="submit">Continue</Button>
+                  <Button type="submit">Continuar</Button>
                 </div>
               </form>
             </div>
