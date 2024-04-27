@@ -17,8 +17,9 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
-export function DataTable({ columns, data, searchKey }) {
+export function DataTable({ columns, data, searchKey, searchKeys }) {
   const [columnFilters, setColumnFilters] = useState([]);
+  const [actualSearchKey, setActualSearchKey] = useState(searchKey);
 
   const table = useReactTable({
     data,
@@ -34,15 +35,24 @@ export function DataTable({ columns, data, searchKey }) {
 
   return (
     <div>
-      <div className="flex items-center py-4">
+      <div className="flex gap-3 items-center py-4">
         <Input
           placeholder="Search"
-          value={table.getColumn(searchKey)?.getFilterValue() ?? ""}
+          value={table.getColumn(actualSearchKey)?.getFilterValue() ?? ""}
           onChange={(event) =>
-            table.getColumn(searchKey)?.setFilterValue(event.target.value)
+            table.getColumn(actualSearchKey)?.setFilterValue(event.target.value)
           }
           className="max-w-sm"
         />
+        <select value={actualSearchKey} onChange={(e) => setActualSearchKey(e.target.value)} className="h-10 rounded-md border border-input text-sm">
+          {
+            searchKeys?.map((key) => (
+              <option key={key} value={key}>
+                {key}
+              </option>
+            ))
+          }
+        </select>
       </div>
       <div className="rounded-md border">
         <Table>
