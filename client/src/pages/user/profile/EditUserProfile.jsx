@@ -81,7 +81,7 @@ const EditUserProfile = () => {
         <form onSubmit={handleSubmit}>
           <div className="grid gap-2 grid-cols-2 mb-4">
             <div className="grid gap-1">
-              <Label htmlFor="firstName">First Name</Label>
+              <Label htmlFor="firstName">Nombres</Label>
               <Input
                 id="firstName"
                 type="text"
@@ -90,7 +90,7 @@ const EditUserProfile = () => {
               />
             </div>
             <div className="grid gap-1">
-              <Label htmlFor="lastName">Last Name</Label>
+              <Label htmlFor="lastName">Apellidos</Label>
               <Input
                 id="lastName"
                 type="text"
@@ -110,7 +110,7 @@ const EditUserProfile = () => {
               />
             </div>
             <div className="grid gap-1">
-              <Label htmlFor="password">Password</Label>
+              <Label htmlFor="password">Contraseña</Label>
               <Input
                 id="password"
                 type="password"
@@ -121,7 +121,7 @@ const EditUserProfile = () => {
           </div>
           <div className="grid gap-2 grid-cols-2 mb-4">
             <div className="grid gap-1">
-              <Label htmlFor="roleJob">Role Job</Label>
+              <Label htmlFor="roleJob">Rol de trabajo</Label>
               <Input
                 id="roleJob"
                 type="text"
@@ -130,7 +130,7 @@ const EditUserProfile = () => {
               />
             </div>
             <div className="grid gap-1">
-              <Label htmlFor="city">City</Label>
+              <Label htmlFor="city">Ciudad</Label>
               <Input
                 id="city"
                 type="text"
@@ -140,7 +140,7 @@ const EditUserProfile = () => {
             </div>
           </div>
           <div className="grid gap-1 mb-4">
-            <Label>Image</Label>
+            <Label>Foto de perfil</Label>
             <Dropzone
               acceptedFiles=".jpg,.jpeg,.png"
               multiple={false}
@@ -171,8 +171,8 @@ const EditUserProfile = () => {
                       </svg>
                       {imageFilename === "" ? (
                         <p className="mb-2 text-sm text-gray-500 dark:text-gray-400">
-                          <span className="font-semibold">Click to upload</span>{" "}
-                          or drag and drop
+                          <span className="font-semibold">Click para subir</span>{" "}
+                          o arrastra una imagen
                         </p>
                       ) : (
                         <p className="mb-2 text-sm text-gray-500 dark:text-gray-400">
@@ -217,8 +217,8 @@ const EditUserProfile = () => {
                       </svg>
                       {cvFilename === "" ? (
                         <p className="mb-2 text-sm text-gray-500 dark:text-gray-400">
-                          <span className="font-semibold">Click to upload</span>{" "}
-                          or drag and drop
+                          <span className="font-semibold">Click para subir</span>{" "}
+                          o arrastra un archivo
                         </p>
                       ) : (
                         <p className="mb-2 text-sm text-gray-500 dark:text-gray-400">
@@ -232,7 +232,7 @@ const EditUserProfile = () => {
             </Dropzone>
           </div>
           <div className="pt-6 space-x-2 flex items-center justify-end w-full">
-            <Button type="submit">Update</Button>
+            <Button type="submit">Actualizar</Button>
           </div>
         </form>
       </LayoutProfile>
