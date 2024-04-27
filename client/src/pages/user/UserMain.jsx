@@ -46,7 +46,7 @@ const UserMain = () => {
     <>
       <LayoutUser>
         <div className="space-y-4 p-8 pt-6">
-          <Heading title="Dashboard User" description="Overview your status" />
+          <Heading title="Panel de usuario" description="Revisa tus aplicaciones a empleos" />
           <Separator />
           {/* STATUS OF JOB APPLIED BY */}
           <section className="space-y-6 pb-4 pt-3 md:pb-6 md:pt-5 lg:py-16">
@@ -64,7 +64,7 @@ const UserMain = () => {
                         </div>
                       )}
                       <h3>
-                        <span className="font-bold">Status: </span>
+                        <span className="font-bold">Estado: </span>
                         {userJob.status}
                       </h3>
                     </div>
@@ -76,7 +76,7 @@ const UserMain = () => {
                           setShowModal(true);
                         }}
                       >
-                        See more
+                        Ver más
                       </Button>
                     </div>
                   </div>
@@ -84,8 +84,8 @@ const UserMain = () => {
             </div>
             <div className="flex justify-center mt-4">
               <ReactPaginate
-                previousLabel={"← Previous"}
-                nextLabel={"Next →"}
+                previousLabel={"← Anterior"}
+                nextLabel={"Siguiente →"}
                 pageCount={pageCount}
                 onPageChange={handlePageClick}
                 containerClassName={"pagination"}
