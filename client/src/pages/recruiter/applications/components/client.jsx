@@ -4,13 +4,15 @@ import { Separator } from "@/components/ui/separator"
 import { columns } from "./columns"
 
 export const ApplicationClient = ({ data, title }) => {
+    const searchKeys = ["userName", "status"]
+
     return(
         <>
             <div className="flex items-center justify-between">
                 <Heading title={`Aplicantes para ${title}`} description="Administra tus aplicantes para este trabajo" />
             </div>
             <Separator />
-            <DataTable columns={columns} data={data} searchKey="userName" />
+            <DataTable columns={columns} data={data} searchKey="userName" searchKeys={searchKeys} />
         </>
     )
 }
