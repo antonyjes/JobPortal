@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom"
 
 export const JobClient = ({ data }) => {
     const navigate = useNavigate();
+    const searchKeys = ["title", "location", "category", "jobType"];
 
     return(
         <>
@@ -19,7 +20,7 @@ export const JobClient = ({ data }) => {
                 </Button>
             </div>
             <Separator />
-            <DataTable columns={columns} data={data} searchKey="title" />
+            <DataTable columns={columns} data={data} searchKey="title" searchKeys={searchKeys} />
         </>
     )
 }
