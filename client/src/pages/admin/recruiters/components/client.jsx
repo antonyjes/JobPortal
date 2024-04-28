@@ -6,6 +6,8 @@ import { Plus } from "lucide-react"
 import { columns } from "./columns"
 
 export const RecruiterClient = ({ data, setShowModal }) => {
+    const searchKeys = ["firstName", "lastName"]
+
     return(
         <>
             <div className="flex items-center justify-between">
@@ -16,7 +18,7 @@ export const RecruiterClient = ({ data, setShowModal }) => {
                 </Button>
             </div>
             <Separator />
-            <DataTable columns={columns} data={data} searchKey="firstName" />
+            <DataTable columns={columns} data={data} searchKey="firstName" searchKeys={searchKeys} />
         </>
     )
 }
